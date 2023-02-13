@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/i_transport.hpp
+stdint.h
+-
+stdbool.h
+-
+
+../include/protocol.hpp
+i_transport.hpp
+../include/i_transport.hpp
+tabl_reg.hpp
+../include/tabl_reg.hpp
+
+../include/tabl_reg.hpp
+stdint.h
+-
+stdbool.h
+-
+
+/home/anton20241/rtc_work/rx_tx/src/serial_sub.cpp
+boost/asio.hpp
+-
+iostream
+-
+protocol.hpp
+-
+

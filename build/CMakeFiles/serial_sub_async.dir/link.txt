@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++11 -pthread -pthread  -rdynamic CMakeFiles/serial_sub_async.dir/src/serial_sub_async.cpp.o  -o serial_sub_async  /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0 /usr/lib/x86_64-linux-gnu/libboost_atomic.so.1.71.0 -lpthread 

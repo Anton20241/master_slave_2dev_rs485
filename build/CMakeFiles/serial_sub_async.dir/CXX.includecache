@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/anton20241/rtc_work/rx_tx/src/serial_sub_async.cpp
+unistd.h
+-
+iostream
+-
+string
+-
+boost/asio.hpp
+-
+boost/bind.hpp
+-
+boost/thread.hpp
+-
+
