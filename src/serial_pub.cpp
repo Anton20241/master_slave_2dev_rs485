@@ -108,11 +108,16 @@ public:
 
         while(true) {
             cv::waitKey(1);
-            char data[] = "Plane!!! Plane!!!";
-            size_t n = m_port.write_some(boost::asio::buffer(data));
+            char sendData[] = "Plane!!! Plane!!!";
+            char recvdData[] = "";
+            size_t sendBytes = m_port.write_some(boost::asio::buffer(sendData));
             // Write data to stdout
+            std::cout << "sendBytes: " << sendBytes << std::endl;
+            std::cout << "sendData: " << sendData << std::endl;
+            size_t recvdBytes = m_port.read_some(boost::asio::buffer(recvdData, sizeof(recvdData)));
+            std::cout << "recvdBytes: " << recvdBytes << std::endl;
+            std::cout << "recvdData: " << recvdData << std::endl;
             std::cout << "count: " << count << std::endl;
-            std::cout << "data: " << data << std::endl;
             std::this_thread::sleep_for (std::chrono::milliseconds(low_Time));
             count++;
         }

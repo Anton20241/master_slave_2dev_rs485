@@ -31,7 +31,11 @@ int main() {
             data[BUFSIZE] = 0;
             std::cout << "recvdBytes: " << recvdBytes << std::endl;
             std::cout << "data: " << data << std::endl;
+            size_t sendBytes = serial.write_some(boost::asio::buffer(data, BUFSIZE), error);
+            std::cout << "sendBytes: " << sendBytes << std::endl;
+            std::cout << "data: " << data << std::endl;
             std::cout << "count: " << count << std::endl;
+
             memset(data, 0, sizeof(data));
             count++;
             
