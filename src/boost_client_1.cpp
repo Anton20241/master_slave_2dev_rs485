@@ -2,15 +2,25 @@
 #include <tabl_reg_config.hpp>
 #include <iostream>
 
-#define MY_DEVICE 0x02
 #define USBPORT_0 "/dev/ttyUSB0"
 #define USBPORT_1 "/dev/ttyUSB1"
 
-int main() {
-    std::cout << "boost_client_1 start.\n\n";
-    boost_rs485::Boost_RS485_Slave_sync boostRS485_transp(USBPORT_1);
+int main(int argc, char** argv) {
+    int devAddr = 0;
+    string devPort = "";
+    
+    if(argc == 3) {
+        devAddr = std::stoi(argv[1]);
+        devPort = argv[2];
+    } else {
+        std::cerr << "[program_name][devAddr(1, 2...)][devPort(1, 2...)]" << std::endl;
+        return -1;
+    }
+
+    std::cout << "boost_client_0 start.\n\n";
+    boost_rs485::Boost_RS485_Slave_sync boostRS485_transp("/dev/ttyUSB" + devPort);
     tabl_reg::TablReg m_tabl(tabl_reg_cfg::tablRegConfig);
-    protocol::Protocol boostRS485_prot(boostRS485_transp, m_tabl, MY_DEVICE);
+    protocol::Protocol boostRS485_prot(boostRS485_transp, m_tabl, devAddr);
     Boost_RS485_Client client(boostRS485_prot, m_tabl);
     client.pollingSensors();
 }

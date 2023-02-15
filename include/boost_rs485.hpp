@@ -256,7 +256,7 @@ namespace boost_rs485
     class Boost_RS485_Slave_sync : public i_transport::ITransport
     {
     public:
-        Boost_RS485_Slave_sync(const char* dev_name):sync_ioService(),sync_port(sync_ioService, dev_name)
+        Boost_RS485_Slave_sync(string dev_name):sync_ioService(),sync_port(sync_ioService, dev_name)
         {
             sync_port.set_option(boost::asio::serial_port_base::baud_rate(BOUDRATE));
             sync_port.set_option(boost::asio::serial_port_base::character_size(8));

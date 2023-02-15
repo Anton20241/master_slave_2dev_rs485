@@ -23,7 +23,7 @@
 					]
 				}
 			],
-			"name" : "",
+			"name" : "Debug",
 			"projects" : 
 			[
 				{
@@ -48,42 +48,42 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "boost_client_0::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-boost_client_0-0b0ef23778aa9c138fde.json",
+					"jsonFile" : "target-boost_client_0-Debug-0aad1008c1556ee38d98.json",
 					"name" : "boost_client_0",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "boost_client_1::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-boost_client_1-6ef42adafc59cd553a55.json",
+					"jsonFile" : "target-boost_client_1-Debug-6e4b353b2c7abccf45de.json",
 					"name" : "boost_client_1",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "boost_server::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-boost_server-4e1f352da429cf4c952d.json",
+					"jsonFile" : "target-boost_server-Debug-d927a23d33791e8778ee.json",
 					"name" : "boost_server",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "serial_pub::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-serial_pub-adafd78280a52cde1efa.json",
+					"jsonFile" : "target-serial_pub-Debug-f6ef650df5d68e44d933.json",
 					"name" : "serial_pub",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "serial_sub::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-serial_sub-f9ab557d154aacc400cb.json",
+					"jsonFile" : "target-serial_sub-Debug-356a51e3d069f951acd2.json",
 					"name" : "serial_sub",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "serial_sub_async::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-serial_sub_async-783cf223158f1af10e61.json",
+					"jsonFile" : "target-serial_sub_async-Debug-ff88ea4c671406cf5c51.json",
 					"name" : "serial_sub_async",
 					"projectIndex" : 0
 				}

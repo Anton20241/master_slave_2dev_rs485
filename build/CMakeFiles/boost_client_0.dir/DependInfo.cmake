@@ -20,6 +20,7 @@ set(CMAKE_TARGET_DEFINITIONS_C
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "../include"
   "../src"
+  "/usr/include/opencv4"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_client_0.cpp" "/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles/boost_client_0.dir/src/boost_client_0.cpp.o"
@@ -41,6 +42,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../include"
   "../src"
+  "/usr/include/opencv4"
   )
 
 # Targets to which this target links.

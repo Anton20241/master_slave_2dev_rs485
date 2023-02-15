@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8)
 PROJECT (rx_tx_project)
 
+find_package(OpenCV REQUIRED)
+
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
 set(SERVER_SRC src/boost_server.cpp
             src/boost_rs485.cpp
@@ -66,7 +68,7 @@ target_link_libraries( serial_sub_async ${Boost_LIBRARIES} )
 
 add_executable( boost_server ${SERVER_SRC})
 target_include_directories (boost_server PRIVATE include/ src/)
-target_link_libraries( boost_server ${Boost_LIBRARIES} )
+target_link_libraries( boost_server ${Boost_LIBRARIES})
 
 add_executable( boost_client_0 ${CLIENT_SRC_0})
 target_include_directories (boost_client_0 PRIVATE include/ src/)
@@ -85,4 +87,10 @@ set(CMAKE_USE_PTHREADS_INIT 1)
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 #---------BOOST---------#
 
-
+#---------OpenCV---------#
+if(OpenCV_FOUND)
+include_directories(${OpenCV_INCLUDE_DIRS})
+target_link_libraries( boost_server ${OpenCV_LIBS})
+target_link_libraries( boost_client_0 ${OpenCV_LIBS})
+target_link_libraries( boost_client_1 ${OpenCV_LIBS})
+endif()

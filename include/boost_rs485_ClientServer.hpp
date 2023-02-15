@@ -10,6 +10,12 @@
 #include <chrono>
 #include <thread>
 
+#include <opencv2/imgproc.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/core.hpp>
+#include <opencv2/core.hpp>
+#include <opencv2/aruco.hpp>
+
 class Boost_RS485_Server
 {
 public:
@@ -20,8 +26,15 @@ public:
         size_t count = 0;
         std::vector <bool> answRecvd(device.size(), 0);
         std::vector <size_t> answRecvdFailedCount(device.size(), 0);
+        int low_C_S_Time = 0;
+        int high_C_S_Time = 20000;
+        //create trackbars
+        cv::namedWindow("Trackbars");
+        cv::createTrackbar("C_S_Time", "Trackbars", &low_C_S_Time, high_C_S_Time);
+        
 
         while(1){
+            cv::waitKey(1);
             for (int i = 0; i < device.size(); i++){
                 answRecvd[i] = m_protocol.sendCmdNOP(device[i]);
 
@@ -32,8 +45,8 @@ public:
 
                 if (answRecvdFailedCount[i] == 10) {
                     std::cout << "\n\n\n!!!DEVICE[" << i << "] CONNECT ERROR!!!\n\n\n";
-                } 
-                std::this_thread::sleep_for(std::chrono::microseconds(500));
+                }
+                std::this_thread::sleep_for(std::chrono::microseconds(low_C_S_Time));
             }
             std::cout << "\n<------[count] = " << count << "------>\n" << std::endl;
             count++; 

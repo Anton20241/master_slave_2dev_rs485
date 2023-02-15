@@ -280,7 +280,7 @@ namespace protocol_master
         /* Отправляем NOP */
         assert(m_transport.sendData(buff, len));
         /* Ждем зеркало */
-        std::this_thread::sleep_for(std::chrono::microseconds(1000));
+        std::this_thread::sleep_for(std::chrono::microseconds(500));
 
         if (!m_transport.getData(recvdBuff, &len)) return false;
         if (buff[0] != recvdBuff[0]) return false;
