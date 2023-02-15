@@ -32,7 +32,7 @@ public:
                 if (answRecvdFailedCount[i] == 10) {
                     std::cout << "\n\n\n!!!DEVICE[" << i << "] CONNECT ERROR!!!\n\n\n";
                 } 
-                std::this_thread::sleep_for(std::chrono::milliseconds(200));
+                std::this_thread::sleep_for(std::chrono::microseconds(14400));
             }
             std::cout << "\n<------[count] = " << count << "------>\n" << std::endl;
             count++; 

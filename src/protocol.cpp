@@ -9,6 +9,7 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include <cstring>
 
 namespace protocol
 {
@@ -267,9 +268,11 @@ namespace protocol_master
 
     uint8_t     buff[proto_max_buff] = {0};
     uint8_t     recvdBuff[proto_max_buff] = {0};
-    uint32_t    len = proto_max_buff;
+    uint32_t    len = packLenMin;
 
     bool ProtocolMaster::sendCmdNOP(uint8_t addressTo){
+        std::memset(buff, 0, sizeof(buff));
+        std::memset(recvdBuff, 0, sizeof(recvdBuff));
         buff[0] = addressTo;
         buff[1] = packLenMin;
         buff[2] = 0x00;
@@ -277,7 +280,7 @@ namespace protocol_master
         /* Отправляем NOP */
         assert(m_transport.sendData(buff, len));
         /* Ждем зеркало */
-        std::this_thread::sleep_for(std::chrono::microseconds(200));
+        std::this_thread::sleep_for(std::chrono::microseconds(1600));
 
         if (!m_transport.getData(recvdBuff, &len)) return false;
         if (buff[0] != recvdBuff[0]) return false;

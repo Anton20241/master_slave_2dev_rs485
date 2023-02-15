@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/anton20241/rtc_work/rx_tx/src/serial_sub_async.cpp" "/home/anton20241/rtc_work/rx_tx/build/CMakeFiles/serial_sub_async.dir/src/serial_sub_async.cpp.o"
+  "/home/anton20241/rtc_work/master_slave_2dev_rs485/src/serial_sub_async.cpp" "/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles/serial_sub_async.dir/src/serial_sub_async.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

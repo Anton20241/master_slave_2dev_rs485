@@ -1,8 +1,8 @@
-/home/anton20241/rtc_work/rx_tx/build/CMakeFiles/boost_client_1.dir
-/home/anton20241/rtc_work/rx_tx/build/CMakeFiles/edit_cache.dir
-/home/anton20241/rtc_work/rx_tx/build/CMakeFiles/boost_client_0.dir
-/home/anton20241/rtc_work/rx_tx/build/CMakeFiles/rebuild_cache.dir
-/home/anton20241/rtc_work/rx_tx/build/CMakeFiles/boost_server.dir
-/home/anton20241/rtc_work/rx_tx/build/CMakeFiles/serial_sub_async.dir
-/home/anton20241/rtc_work/rx_tx/build/CMakeFiles/serial_sub.dir
-/home/anton20241/rtc_work/rx_tx/build/CMakeFiles/serial_pub.dir
+/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles/boost_client_1.dir
+/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles/edit_cache.dir
+/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles/boost_client_0.dir
+/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles/rebuild_cache.dir
+/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles/boost_server.dir
+/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles/serial_sub_async.dir
+/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles/serial_sub.dir
+/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles/serial_pub.dir

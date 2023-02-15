@@ -4,7 +4,7 @@
 
 #define BUFSIZE 256
 #define BOUDRATE 230400
-#define DEVICE "/dev/ttyUSB1"
+#define DEVICE "/dev/ttyUSB0"
 
 
 int main() {
@@ -20,16 +20,19 @@ int main() {
 
     // Read data in a loop and copy to stdout
     size_t count = 0;
-    char data[BUFSIZE];
+    uint8_t data[BUFSIZE];
     while(true) {
         boost::system::error_code error;
-        size_t n = serial.read_some(boost::asio::buffer(data, BUFSIZE), error);
+        size_t recvdBytes = serial.read_some(boost::asio::buffer(data, BUFSIZE), error);
         if(!error){
             // Write data to stdout
-            std::cout << "count: " << count << std::endl;
+            data[BUFSIZE] = 0;
+            std::cout << "recvdBytes: " << recvdBytes << std::endl;
             std::cout << "data: " << data << std::endl;
-            memset(data, '\0', sizeof(data));
+            std::cout << "count: " << count << std::endl;
+            memset(data, 0, sizeof(data));
             count++;
+            
         } else {
             //std::cerr << error.what();
         }

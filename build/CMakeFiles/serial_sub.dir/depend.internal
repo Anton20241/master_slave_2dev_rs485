@@ -5,4 +5,4 @@ CMakeFiles/serial_sub.dir/src/serial_sub.cpp.o
  ../include/i_transport.hpp
  ../include/protocol.hpp
  ../include/tabl_reg.hpp
- /home/anton20241/rtc_work/rx_tx/src/serial_sub.cpp
+ /home/anton20241/rtc_work/master_slave_2dev_rs485/src/serial_sub.cpp

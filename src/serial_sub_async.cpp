@@ -7,19 +7,26 @@
 
 #define BUFSIZE 256
 #define BOUDRATE 230400
-#define DEVICE "/dev/ttyUSB1"
+#define DEVICE "/dev/ttyUSB0"
 
 using namespace std;
 using namespace boost::asio;
 
 class Client{
-  char read_msg_[BUFSIZE];
+  uint8_t read_msg_[BUFSIZE];
   boost::asio::io_service ios;
   boost::asio::serial_port port;
+  uint32_t count = 0;
+
 private:
   void handler(const boost::system::error_code& error,size_t bytes_transferred)
   {
+    count++;
     read_msg_[bytes_transferred] = 0;
+    std::cout << "bytes_transferred: " << bytes_transferred << std::endl;
+    std::cout << "read_msg_: " << read_msg_ << std::endl;
+    std::cout << "count: " << count << std::endl;
+
     cout << bytes_transferred << " bytes: "<< read_msg_ <<endl;
     read_some();
   }
@@ -27,6 +34,7 @@ private:
 public:
   void read_some()
   {
+    memset(read_msg_, 0, sizeof(read_msg_));
     port.async_read_some(boost::asio::buffer(read_msg_,sizeof(read_msg_)),
 			 boost::bind(&Client::handler,this,
 				     boost::asio::placeholders::error,
@@ -51,11 +59,6 @@ int main(int argc,char* argv[])
 {
   std::cout << "serial_sub_async start" << std::endl;
   Client client(DEVICE);
-  size_t count = 0;
-  while(1){
-    std::cout << "count = " << count << std::endl;
-    std::this_thread::sleep_for (std::chrono::milliseconds(100));
-    count++;
-  }
+  while(1){}
   return 0;
 }

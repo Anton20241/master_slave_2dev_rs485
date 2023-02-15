@@ -5,7 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/anton20241/rtc_work/rx_tx/src/umba_crc_table.c" "/home/anton20241/rtc_work/rx_tx/build/CMakeFiles/boost_server.dir/src/umba_crc_table.c.o"
+  "/home/anton20241/rtc_work/master_slave_2dev_rs485/src/umba_crc_table.c" "/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles/boost_server.dir/src/umba_crc_table.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -22,11 +22,11 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "../src"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/anton20241/rtc_work/rx_tx/src/boost_rs485.cpp" "/home/anton20241/rtc_work/rx_tx/build/CMakeFiles/boost_server.dir/src/boost_rs485.cpp.o"
-  "/home/anton20241/rtc_work/rx_tx/src/boost_rs485_ClientServer.cpp" "/home/anton20241/rtc_work/rx_tx/build/CMakeFiles/boost_server.dir/src/boost_rs485_ClientServer.cpp.o"
-  "/home/anton20241/rtc_work/rx_tx/src/boost_server.cpp" "/home/anton20241/rtc_work/rx_tx/build/CMakeFiles/boost_server.dir/src/boost_server.cpp.o"
-  "/home/anton20241/rtc_work/rx_tx/src/protocol.cpp" "/home/anton20241/rtc_work/rx_tx/build/CMakeFiles/boost_server.dir/src/protocol.cpp.o"
-  "/home/anton20241/rtc_work/rx_tx/src/tabl_reg.cpp" "/home/anton20241/rtc_work/rx_tx/build/CMakeFiles/boost_server.dir/src/tabl_reg.cpp.o"
+  "/home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_rs485.cpp" "/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles/boost_server.dir/src/boost_rs485.cpp.o"
+  "/home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_rs485_ClientServer.cpp" "/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles/boost_server.dir/src/boost_rs485_ClientServer.cpp.o"
+  "/home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_server.cpp" "/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles/boost_server.dir/src/boost_server.cpp.o"
+  "/home/anton20241/rtc_work/master_slave_2dev_rs485/src/protocol.cpp" "/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles/boost_server.dir/src/protocol.cpp.o"
+  "/home/anton20241/rtc_work/master_slave_2dev_rs485/src/tabl_reg.cpp" "/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles/boost_server.dir/src/tabl_reg.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

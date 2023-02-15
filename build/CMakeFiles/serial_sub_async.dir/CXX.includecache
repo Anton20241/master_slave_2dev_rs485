@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/anton20241/rtc_work/rx_tx/src/serial_sub_async.cpp
+/home/anton20241/rtc_work/master_slave_2dev_rs485/src/serial_sub_async.cpp
 unistd.h
 -
 iostream

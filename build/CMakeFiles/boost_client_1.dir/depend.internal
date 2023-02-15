@@ -3,7 +3,7 @@
 
 CMakeFiles/boost_client_1.dir/src/umba_crc_table.c.o
  ../include/umba_crc_table.h
- /home/anton20241/rtc_work/rx_tx/src/umba_crc_table.c
+ /home/anton20241/rtc_work/master_slave_2dev_rs485/src/umba_crc_table.c
 CMakeFiles/boost_client_1.dir/src/boost_client_1.cpp.o
  ../include/boost_rs485.hpp
  ../include/boost_rs485_ClientServer.hpp
@@ -12,11 +12,11 @@ CMakeFiles/boost_client_1.dir/src/boost_client_1.cpp.o
  ../include/tabl_reg.hpp
  ../include/tabl_reg_config.hpp
  ../include/umba_crc_table.h
- /home/anton20241/rtc_work/rx_tx/src/boost_client_1.cpp
+ /home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_client_1.cpp
 CMakeFiles/boost_client_1.dir/src/boost_rs485.cpp.o
  ../include/boost_rs485.hpp
  ../include/i_transport.hpp
- /home/anton20241/rtc_work/rx_tx/src/boost_rs485.cpp
+ /home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_rs485.cpp
 CMakeFiles/boost_client_1.dir/src/boost_rs485_ClientServer.cpp.o
  ../include/boost_rs485.hpp
  ../include/boost_rs485_ClientServer.hpp
@@ -24,13 +24,13 @@ CMakeFiles/boost_client_1.dir/src/boost_rs485_ClientServer.cpp.o
  ../include/protocol.hpp
  ../include/tabl_reg.hpp
  ../include/umba_crc_table.h
- /home/anton20241/rtc_work/rx_tx/src/boost_rs485_ClientServer.cpp
+ /home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_rs485_ClientServer.cpp
 CMakeFiles/boost_client_1.dir/src/protocol.cpp.o
  ../include/i_transport.hpp
  ../include/protocol.hpp
  ../include/tabl_reg.hpp
  ../include/umba_crc_table.h
- /home/anton20241/rtc_work/rx_tx/src/protocol.cpp
+ /home/anton20241/rtc_work/master_slave_2dev_rs485/src/protocol.cpp
 CMakeFiles/boost_client_1.dir/src/tabl_reg.cpp.o
  ../include/tabl_reg.hpp
- /home/anton20241/rtc_work/rx_tx/src/tabl_reg.cpp
+ /home/anton20241/rtc_work/master_slave_2dev_rs485/src/tabl_reg.cpp

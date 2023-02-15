@@ -24,7 +24,7 @@ stdint.h
 stdbool.h
 -
 
-/home/anton20241/rtc_work/rx_tx/src/serial_sub.cpp
+/home/anton20241/rtc_work/master_slave_2dev_rs485/src/serial_sub.cpp
 boost/asio.hpp
 -
 iostream

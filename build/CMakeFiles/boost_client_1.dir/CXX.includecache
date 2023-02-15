@@ -56,17 +56,11 @@ tabl_reg.hpp
 stdint.h
 -
 
-/home/anton20241/rtc_work/rx_tx/src/boost_client_1.cpp
+/home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_client_1.cpp
 boost_rs485_ClientServer.hpp
 -
 tabl_reg_config.hpp
 -
 iostream
 -
-
-/home/anton20241/rtc_work/rx_tx/src/boost_rs485_ClientServer.cpp
-cstring
--
-boost_rs485_ClientServer.hpp
-/home/anton20241/rtc_work/rx_tx/src/boost_rs485_ClientServer.hpp
 
