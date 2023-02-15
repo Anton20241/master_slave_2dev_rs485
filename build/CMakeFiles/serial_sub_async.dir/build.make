@@ -60,15 +60,15 @@ include CMakeFiles/serial_sub_async.dir/flags.make
 CMakeFiles/serial_sub_async.dir/src/serial_sub_async.cpp.o: CMakeFiles/serial_sub_async.dir/flags.make
 CMakeFiles/serial_sub_async.dir/src/serial_sub_async.cpp.o: ../src/serial_sub_async.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/serial_sub_async.dir/src/serial_sub_async.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/serial_sub_async.dir/src/serial_sub_async.cpp.o -c /home/anton20241/rtc_work/master_slave_2dev_rs485/src/serial_sub_async.cpp
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/serial_sub_async.dir/src/serial_sub_async.cpp.o -c /home/anton20241/rtc_work/master_slave_2dev_rs485/src/serial_sub_async.cpp
 
 CMakeFiles/serial_sub_async.dir/src/serial_sub_async.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/serial_sub_async.dir/src/serial_sub_async.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anton20241/rtc_work/master_slave_2dev_rs485/src/serial_sub_async.cpp > CMakeFiles/serial_sub_async.dir/src/serial_sub_async.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anton20241/rtc_work/master_slave_2dev_rs485/src/serial_sub_async.cpp > CMakeFiles/serial_sub_async.dir/src/serial_sub_async.cpp.i
 
 CMakeFiles/serial_sub_async.dir/src/serial_sub_async.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/serial_sub_async.dir/src/serial_sub_async.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anton20241/rtc_work/master_slave_2dev_rs485/src/serial_sub_async.cpp -o CMakeFiles/serial_sub_async.dir/src/serial_sub_async.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anton20241/rtc_work/master_slave_2dev_rs485/src/serial_sub_async.cpp -o CMakeFiles/serial_sub_async.dir/src/serial_sub_async.cpp.s
 
 # Object files for target serial_sub_async
 serial_sub_async_OBJECTS = \

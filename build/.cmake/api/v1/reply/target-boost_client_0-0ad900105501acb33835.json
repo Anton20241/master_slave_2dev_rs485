@@ -62,7 +62,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : " -std=c++11 -pthread -pthread -g  "
+					"fragment" : " -std=c++11 -pthread -pthread  "
 				}
 			],
 			"defines" : 
@@ -110,7 +110,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g  "
+					"fragment" : " "
 				}
 			],
 			"defines" : 
@@ -157,7 +157,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-std=c++11 -pthread -pthread -g",
+				"fragment" : "-std=c++11 -pthread -pthread",
 				"role" : "flags"
 			},
 			{

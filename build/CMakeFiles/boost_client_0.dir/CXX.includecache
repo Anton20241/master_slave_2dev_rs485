@@ -108,6 +108,12 @@ thread
 cstring
 -
 
+/home/anton20241/rtc_work/master_slave_2dev_rs485/src/tabl_reg.cpp
+cstring
+-
+tabl_reg.hpp
+/home/anton20241/rtc_work/master_slave_2dev_rs485/src/tabl_reg.hpp
+
 /usr/include/opencv4/opencv2/aruco.hpp
 opencv2/core.hpp
 -

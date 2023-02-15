@@ -125,7 +125,7 @@ namespace boost_rs485
         {
             if(!error){
                 s_recvdCount++;
-                std::cout << "socket read returns: " + error.message();
+                std::cout << "\nport read returns: " + error.message();
                 s_recvd = true;
                 printf("\n[I RECEIVED]:\n"
                 "[%u][%u][%u][%u\t][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u]\n"
@@ -134,13 +134,13 @@ namespace boost_rs485
                 s_recvdData[4], s_recvdData[5], s_recvdData[6], s_recvdData[7], 
                 s_recvdData[8], s_recvdData[9], s_recvdData[10], s_recvdData[11],
                 s_recvdData[12], s_recvdData[13], s_recvdData[14], s_recvdData[15], s_recvdCount);
-                cout << "bytes_transferred: "<< bytes_transferred << endl << endl;
+                cout << "bytes_transferred: "<< bytes_transferred << endl;
             }
             getData();
         }
 
     public:
-        Boost_RS485_Slave(const char* dev_name):s_ioService(),s_port(s_ioService, dev_name)
+        Boost_RS485_Slave(std::string dev_name):s_ioService(),s_port(s_ioService, dev_name)
         {
             s_port.set_option(boost::asio::serial_port_base::baud_rate(BOUDRATE));
             s_port.set_option(boost::asio::serial_port_base::character_size(8));
