@@ -55,7 +55,7 @@ namespace boost_rs485
         }
 
     public:
-        Boost_RS485_Master(const char* dev_name):m_ioService(),m_port(m_ioService, dev_name)
+        Boost_RS485_Master(std::string dev_name):m_ioService(),m_port(m_ioService, dev_name)
         {
             m_port.set_option(boost::asio::serial_port_base::baud_rate(BOUDRATE));
             m_port.set_option(boost::asio::serial_port_base::character_size(8));

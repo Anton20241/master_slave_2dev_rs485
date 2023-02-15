@@ -42,7 +42,7 @@ int main() {
             }
             count++;
         } else {
-            std::cerr << reError.what();
+            //std::cerr << reError.what();
         }
     }
 }
