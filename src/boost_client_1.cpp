@@ -2,9 +2,6 @@
 #include <tabl_reg_config.hpp>
 #include <iostream>
 
-#define USBPORT_0 "/dev/ttyUSB0"
-#define USBPORT_1 "/dev/ttyUSB1"
-
 int main(int argc, char** argv) {
     int devAddr = 0;
     string devPort = "";
