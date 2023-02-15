@@ -38,7 +38,7 @@ namespace boost_rs485
 
         void read_handler(const boost::system::error_code& error,size_t bytes_transferred)
         {
-            if(!error && (bytes_transferred == m_recvdData[1])){
+            if(!error){
                 m_recvdCount++;
                 m_recvd = true;
                 std::cout << "\nport read returns: " + error.message();
@@ -71,7 +71,7 @@ namespace boost_rs485
         {
             boost::system::error_code error;
             size_t sendBytes = m_port.write_some(boost::asio::buffer(ptrData, len), error);
-            if(!error && (sendBytes == ptrData[1])){
+            if(!error){
                 m_sendCount++;
                 std::cout << "\nport write returns: " + error.message();
                 printf("\n[I SEND]:\n"
@@ -123,7 +123,7 @@ namespace boost_rs485
 
         void read_handler(const boost::system::error_code& error,size_t bytes_transferred)
         {
-            if(!error && (bytes_transferred == s_recvdData[1])){
+            if(!error){
                 s_recvdCount++;
                 std::cout << "socket read returns: " + error.message();
                 s_recvd = true;
@@ -156,7 +156,7 @@ namespace boost_rs485
         {
             boost::system::error_code error;
             size_t sendBytes = s_port.write_some(boost::asio::buffer(ptrData, len), error);
-            if(!error && (sendBytes == ptrData[1])){
+            if(!error){
                 s_sendCount++;
                 std::cout << "\nport write returns: " + error.message();
                 printf("\n[I SEND]:\n"
@@ -213,7 +213,7 @@ namespace boost_rs485
         {
             boost::system::error_code error;
             size_t sendBytes = sync_port.write_some(boost::asio::buffer(ptrData, len), error);
-            if(!error && (sendBytes == ptrData[1])){
+            if(!error){
                 sync_sendCount++;
                 std::cout << "\nport write returns: " + error.message();
                 printf("\n[I SEND]:\n"
@@ -235,7 +235,7 @@ namespace boost_rs485
         {
             boost::system::error_code error;
             size_t recvdBytes = sync_port.read_some(boost::asio::buffer(ptrData, sizeof(ptrData)), error);
-            if(!error && (recvdBytes == ptrData[1])){
+            if(!error){
                 sync_recvdCount++;
                 std::cout << "\nport read returns: " + error.message();
                 printf("\n[I RECEIVED]:\n"

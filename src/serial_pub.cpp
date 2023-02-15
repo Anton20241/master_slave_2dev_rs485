@@ -90,7 +90,7 @@ public:
                 std::cout << "sendMsg: " << sendMsg << std::endl;
                 std::cout << "count: " << count << std::endl;
             } else {
-                std::cerr << wrError.what();
+                //std::cerr << wrError.what();
             }
             std::this_thread::sleep_for (std::chrono::milliseconds(low_Time));
             count++;

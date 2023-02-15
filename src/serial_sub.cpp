@@ -38,7 +38,7 @@ int main() {
                 std::cout << "data: " << data << std::endl;
                 std::cout << "count: " << count << std::endl;
             } else {
-                std::cerr << wrError.what();
+                //std::cerr << wrError.what();
             }
             count++;
         } else {
