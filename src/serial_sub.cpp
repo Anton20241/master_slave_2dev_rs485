@@ -4,10 +4,9 @@
 #include <chrono>
 #include <thread>
 
-#define BUFSIZE 256
+#define BUFSIZE 18
 #define BOUDRATE 230400
-#define DEVICE "/dev/ttyUSB0"
-
+#define DEVICE "/dev/ttyUSB1"
 
 int main() {
     boost::asio::io_service io;
@@ -22,25 +21,28 @@ int main() {
 
     // Read data in a loop and copy to stdout
     size_t count = 0;
-    uint8_t data[BUFSIZE];
+    char data[BUFSIZE];
     while(true) {
-        boost::system::error_code error;
-        size_t recvdBytes = serial.read_some(boost::asio::buffer(data, BUFSIZE), error);
-        if(!error){
-            // Write data to stdout
-            data[BUFSIZE] = 0;
+        boost::system::error_code reError;
+        boost::system::error_code wrError;
+        memset(data, '\0', sizeof(data));
+        size_t recvdBytes = serial.read_some(boost::asio::buffer(data, BUFSIZE), reError);
+        if(!reError){
+            std::cout << "socket read returns: " + reError.message() << std::endl;
             std::cout << "recvdBytes: " << recvdBytes << std::endl;
             std::cout << "data: " << data << std::endl;
-            size_t sendBytes = serial.write_some(boost::asio::buffer(data, BUFSIZE), error);
-            std::cout << "sendBytes: " << sendBytes << std::endl;
-            std::cout << "data: " << data << std::endl;
-            std::cout << "count: " << count << std::endl;
-
-            memset(data, 0, sizeof(data));
+            size_t sendBytes = serial.write_some(boost::asio::buffer(data, BUFSIZE), wrError);
+            if(!wrError){
+                std::cout << "socket write returns: " + wrError.message() << std::endl;
+                std::cout << "sendBytes: " << sendBytes << std::endl;
+                std::cout << "data: " << data << std::endl;
+                std::cout << "count: " << count << std::endl;
+            } else {
+                std::cerr << wrError.what();
+            }
             count++;
-            
         } else {
-            //std::cerr << error.what();
+            std::cerr << reError.what();
         }
     }
 }

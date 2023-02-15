@@ -48,7 +48,7 @@ public:
                 }
                 std::this_thread::sleep_for(std::chrono::microseconds(low_C_S_Time));
             }
-            std::cout << "\n<------[count] = " << count << "------>\n" << std::endl;
+            //std::cout << "\n<------[count] = " << count << "------>\n" << std::endl;
             count++; 
         }
     }
