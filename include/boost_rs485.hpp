@@ -40,10 +40,10 @@ namespace boost_rs485
         {
             if(!error && (bytes_transferred == m_recvdData[1])){
                 m_recvdCount++;
-                std::cout << "socket read returns: " + error.message();
                 m_recvd = true;
+                std::cout << "socket read returns: " + error.message();
                 printf("\n[I RECEIVED]:\n"
-                "[%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u]\n\n"
+                "[%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u]\n"
                 "m_recvdCount = %u\n",
                 m_recvdData[0], m_recvdData[1], m_recvdData[2], m_recvdData[3],
                 m_recvdData[4], m_recvdData[5], m_recvdData[6], m_recvdData[7], 
@@ -73,8 +73,9 @@ namespace boost_rs485
             size_t sendBytes = m_port.write_some(boost::asio::buffer(ptrData, len), error);
             if(!error && (sendBytes == ptrData[1])){
                 m_sendCount++;
+                std::cout << "socket write returns: " + error.message();
                 printf("\n[I SEND]:\n"
-                "[%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u]\n\n"
+                "[%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u]\n"
                 "m_sendCount = %u\n",
                 ptrData[0], ptrData[1], ptrData[2], ptrData[3],
                 ptrData[4], ptrData[5], ptrData[6], ptrData[7], 
@@ -126,7 +127,7 @@ namespace boost_rs485
                 std::cout << "socket read returns: " + error.message();
                 s_recvd = true;
                 printf("\n[I RECEIVED]:\n"
-                "[%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u]\n\n"
+                "[%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u]\n"
                 "s_recvdCount = %u\n",
                 s_recvdData[0], s_recvdData[1], s_recvdData[2], s_recvdData[3],
                 s_recvdData[4], s_recvdData[5], s_recvdData[6], s_recvdData[7], 
@@ -157,7 +158,7 @@ namespace boost_rs485
             if(!error && (sendBytes == ptrData[1])){
                 s_sendCount++;
                 printf("\n[I SEND]:\n"
-                "[%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u]\n\n"
+                "[%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u]\n"
                 "s_sendCount = %u\n",
                 ptrData[0], ptrData[1], ptrData[2], ptrData[3],
                 ptrData[4], ptrData[5], ptrData[6], ptrData[7], 
@@ -211,13 +212,15 @@ namespace boost_rs485
             size_t sendBytes = sync_port.write_some(boost::asio::buffer(ptrData, len), error);
             if(!error && (sendBytes == ptrData[1])){
                 sync_sendCount++;
+                std::cout << "\nport write returns: " + error.message();
                 printf("\n[I SEND]:\n"
-                "[%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u]\n\n"
+                "[%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u]\n"
                 "sync_sendCount = %u\n",
                 ptrData[0], ptrData[1], ptrData[2], ptrData[3],
                 ptrData[4], ptrData[5], ptrData[6], ptrData[7], 
                 ptrData[8], ptrData[9], ptrData[10], ptrData[11],
                 ptrData[12], ptrData[13], ptrData[14], ptrData[15], sync_sendCount);
+                cout << "sendBytes: "<< sendBytes << endl;
                 return true;
             } else {
                 //std::cerr << error.what();
@@ -231,15 +234,15 @@ namespace boost_rs485
             size_t recvdBytes = sync_port.read_some(boost::asio::buffer(ptrData, sizeof(ptrData)), error);
             if(!error && (recvdBytes == ptrData[1])){
                 sync_recvdCount++;
-                std::cout << "socket read returns: " + error.message();
+                std::cout << "\nport read returns: " + error.message();
                 printf("\n[I RECEIVED]:\n"
-                "[%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u]\n\n"
+                "[%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u]\n"
                 "sync_recvdCount = %u\n",
                 ptrData[0], ptrData[1], ptrData[2], ptrData[3],
                 ptrData[4], ptrData[5], ptrData[6], ptrData[7], 
                 ptrData[8], ptrData[9], ptrData[10], ptrData[11],
                 ptrData[12], ptrData[13], ptrData[14], ptrData[15], sync_recvdCount);
-                cout << "recvdBytes: "<< recvdBytes << endl << endl;
+                cout << "recvdBytes: "<< recvdBytes << endl;
                 return true;
             } else {
                 //std::cerr << error.what();

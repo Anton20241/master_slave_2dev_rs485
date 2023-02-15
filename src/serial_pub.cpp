@@ -7,6 +7,12 @@
 #include <chrono>
 #include <thread>
 
+#include <opencv2/imgproc.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/core.hpp>
+#include <opencv2/core.hpp>
+#include <opencv2/aruco.hpp>
+
 #define BOUDRATE 230400
 #define DEVICE "/dev/ttyUSB0"
 
@@ -49,7 +55,12 @@ public:
 
     virtual bool sendData() override {
         size_t count = 0;
+        //create trackbars
+        cv::namedWindow("Trackbars");
+        cv::createTrackbar("C_S_Time", "Trackbars", &low_Time, high_Time);
+
         while(true) {
+            cv::waitKey(1);
             char data[] = "Bus!!! Bus!!!";
             boost::system::error_code error;
             size_t n = m_port.write_some(boost::asio::buffer(data), error);
@@ -57,7 +68,7 @@ public:
                 // Write data to stdout
                 std::cout << "count: " << count << std::endl;
                 std::cout << "data: " << data << std::endl;
-                std::this_thread::sleep_for (std::chrono::milliseconds(200));
+                std::this_thread::sleep_for (std::chrono::microseconds(low_Time));
                 count++;
             } else {
                 //std::cerr << error.what();
@@ -68,6 +79,8 @@ public:
 
 private:
     boost::asio::serial_port m_port;
+    int low_Time = 0;
+    int high_Time = 20000;
 };
 
 class Plane: public ITransport{
@@ -88,13 +101,19 @@ public:
 
     virtual bool sendData() override {
         size_t count = 0;
+
+        //create trackbars
+        cv::namedWindow("Trackbars");
+        cv::createTrackbar("C_S_Time", "Trackbars", &low_Time, high_Time);
+
         while(true) {
+            cv::waitKey(1);
             char data[] = "Plane!!! Plane!!!";
             size_t n = m_port.write_some(boost::asio::buffer(data));
             // Write data to stdout
             std::cout << "count: " << count << std::endl;
             std::cout << "data: " << data << std::endl;
-            std::this_thread::sleep_for (std::chrono::milliseconds(200));
+            std::this_thread::sleep_for (std::chrono::milliseconds(low_Time));
             count++;
         }
         return true;
@@ -102,6 +121,8 @@ public:
 
 private:
     boost::asio::serial_port m_port;
+    int low_Time = 0;
+    int high_Time = 20000;
 };
 
 

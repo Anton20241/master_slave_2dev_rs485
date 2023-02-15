@@ -69,21 +69,21 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "serial_pub::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-serial_pub-Debug-f6ef650df5d68e44d933.json",
+					"jsonFile" : "target-serial_pub-Debug-4b79db5500ce234a8088.json",
 					"name" : "serial_pub",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "serial_sub::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-serial_sub-Debug-356a51e3d069f951acd2.json",
+					"jsonFile" : "target-serial_sub-Debug-ee9f3c887ba4238edb48.json",
 					"name" : "serial_sub",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "serial_sub_async::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-serial_sub_async-Debug-ff88ea4c671406cf5c51.json",
+					"jsonFile" : "target-serial_sub_async-Debug-596b4e5536a68465b539.json",
 					"name" : "serial_sub_async",
 					"projectIndex" : 0
 				}
