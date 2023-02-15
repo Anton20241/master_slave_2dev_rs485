@@ -60,80 +60,80 @@ include CMakeFiles/boost_client_0.dir/flags.make
 CMakeFiles/boost_client_0.dir/src/boost_client_0.cpp.o: CMakeFiles/boost_client_0.dir/flags.make
 CMakeFiles/boost_client_0.dir/src/boost_client_0.cpp.o: ../src/boost_client_0.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/boost_client_0.dir/src/boost_client_0.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/boost_client_0.dir/src/boost_client_0.cpp.o -c /home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_client_0.cpp
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/boost_client_0.dir/src/boost_client_0.cpp.o -c /home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_client_0.cpp
 
 CMakeFiles/boost_client_0.dir/src/boost_client_0.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/boost_client_0.dir/src/boost_client_0.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_client_0.cpp > CMakeFiles/boost_client_0.dir/src/boost_client_0.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_client_0.cpp > CMakeFiles/boost_client_0.dir/src/boost_client_0.cpp.i
 
 CMakeFiles/boost_client_0.dir/src/boost_client_0.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/boost_client_0.dir/src/boost_client_0.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_client_0.cpp -o CMakeFiles/boost_client_0.dir/src/boost_client_0.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_client_0.cpp -o CMakeFiles/boost_client_0.dir/src/boost_client_0.cpp.s
 
 CMakeFiles/boost_client_0.dir/src/boost_rs485.cpp.o: CMakeFiles/boost_client_0.dir/flags.make
 CMakeFiles/boost_client_0.dir/src/boost_rs485.cpp.o: ../src/boost_rs485.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/boost_client_0.dir/src/boost_rs485.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/boost_client_0.dir/src/boost_rs485.cpp.o -c /home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_rs485.cpp
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/boost_client_0.dir/src/boost_rs485.cpp.o -c /home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_rs485.cpp
 
 CMakeFiles/boost_client_0.dir/src/boost_rs485.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/boost_client_0.dir/src/boost_rs485.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_rs485.cpp > CMakeFiles/boost_client_0.dir/src/boost_rs485.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_rs485.cpp > CMakeFiles/boost_client_0.dir/src/boost_rs485.cpp.i
 
 CMakeFiles/boost_client_0.dir/src/boost_rs485.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/boost_client_0.dir/src/boost_rs485.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_rs485.cpp -o CMakeFiles/boost_client_0.dir/src/boost_rs485.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_rs485.cpp -o CMakeFiles/boost_client_0.dir/src/boost_rs485.cpp.s
 
 CMakeFiles/boost_client_0.dir/src/boost_rs485_ClientServer.cpp.o: CMakeFiles/boost_client_0.dir/flags.make
 CMakeFiles/boost_client_0.dir/src/boost_rs485_ClientServer.cpp.o: ../src/boost_rs485_ClientServer.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/boost_client_0.dir/src/boost_rs485_ClientServer.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/boost_client_0.dir/src/boost_rs485_ClientServer.cpp.o -c /home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_rs485_ClientServer.cpp
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/boost_client_0.dir/src/boost_rs485_ClientServer.cpp.o -c /home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_rs485_ClientServer.cpp
 
 CMakeFiles/boost_client_0.dir/src/boost_rs485_ClientServer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/boost_client_0.dir/src/boost_rs485_ClientServer.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_rs485_ClientServer.cpp > CMakeFiles/boost_client_0.dir/src/boost_rs485_ClientServer.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_rs485_ClientServer.cpp > CMakeFiles/boost_client_0.dir/src/boost_rs485_ClientServer.cpp.i
 
 CMakeFiles/boost_client_0.dir/src/boost_rs485_ClientServer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/boost_client_0.dir/src/boost_rs485_ClientServer.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_rs485_ClientServer.cpp -o CMakeFiles/boost_client_0.dir/src/boost_rs485_ClientServer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_rs485_ClientServer.cpp -o CMakeFiles/boost_client_0.dir/src/boost_rs485_ClientServer.cpp.s
 
 CMakeFiles/boost_client_0.dir/src/protocol.cpp.o: CMakeFiles/boost_client_0.dir/flags.make
 CMakeFiles/boost_client_0.dir/src/protocol.cpp.o: ../src/protocol.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/boost_client_0.dir/src/protocol.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/boost_client_0.dir/src/protocol.cpp.o -c /home/anton20241/rtc_work/master_slave_2dev_rs485/src/protocol.cpp
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/boost_client_0.dir/src/protocol.cpp.o -c /home/anton20241/rtc_work/master_slave_2dev_rs485/src/protocol.cpp
 
 CMakeFiles/boost_client_0.dir/src/protocol.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/boost_client_0.dir/src/protocol.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anton20241/rtc_work/master_slave_2dev_rs485/src/protocol.cpp > CMakeFiles/boost_client_0.dir/src/protocol.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anton20241/rtc_work/master_slave_2dev_rs485/src/protocol.cpp > CMakeFiles/boost_client_0.dir/src/protocol.cpp.i
 
 CMakeFiles/boost_client_0.dir/src/protocol.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/boost_client_0.dir/src/protocol.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anton20241/rtc_work/master_slave_2dev_rs485/src/protocol.cpp -o CMakeFiles/boost_client_0.dir/src/protocol.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anton20241/rtc_work/master_slave_2dev_rs485/src/protocol.cpp -o CMakeFiles/boost_client_0.dir/src/protocol.cpp.s
 
 CMakeFiles/boost_client_0.dir/src/tabl_reg.cpp.o: CMakeFiles/boost_client_0.dir/flags.make
 CMakeFiles/boost_client_0.dir/src/tabl_reg.cpp.o: ../src/tabl_reg.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/boost_client_0.dir/src/tabl_reg.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/boost_client_0.dir/src/tabl_reg.cpp.o -c /home/anton20241/rtc_work/master_slave_2dev_rs485/src/tabl_reg.cpp
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/boost_client_0.dir/src/tabl_reg.cpp.o -c /home/anton20241/rtc_work/master_slave_2dev_rs485/src/tabl_reg.cpp
 
 CMakeFiles/boost_client_0.dir/src/tabl_reg.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/boost_client_0.dir/src/tabl_reg.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anton20241/rtc_work/master_slave_2dev_rs485/src/tabl_reg.cpp > CMakeFiles/boost_client_0.dir/src/tabl_reg.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anton20241/rtc_work/master_slave_2dev_rs485/src/tabl_reg.cpp > CMakeFiles/boost_client_0.dir/src/tabl_reg.cpp.i
 
 CMakeFiles/boost_client_0.dir/src/tabl_reg.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/boost_client_0.dir/src/tabl_reg.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anton20241/rtc_work/master_slave_2dev_rs485/src/tabl_reg.cpp -o CMakeFiles/boost_client_0.dir/src/tabl_reg.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anton20241/rtc_work/master_slave_2dev_rs485/src/tabl_reg.cpp -o CMakeFiles/boost_client_0.dir/src/tabl_reg.cpp.s
 
 CMakeFiles/boost_client_0.dir/src/umba_crc_table.c.o: CMakeFiles/boost_client_0.dir/flags.make
 CMakeFiles/boost_client_0.dir/src/umba_crc_table.c.o: ../src/umba_crc_table.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/boost_client_0.dir/src/umba_crc_table.c.o"
-	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/boost_client_0.dir/src/umba_crc_table.c.o   -c /home/anton20241/rtc_work/master_slave_2dev_rs485/src/umba_crc_table.c
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/boost_client_0.dir/src/umba_crc_table.c.o   -c /home/anton20241/rtc_work/master_slave_2dev_rs485/src/umba_crc_table.c
 
 CMakeFiles/boost_client_0.dir/src/umba_crc_table.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/boost_client_0.dir/src/umba_crc_table.c.i"
-	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/anton20241/rtc_work/master_slave_2dev_rs485/src/umba_crc_table.c > CMakeFiles/boost_client_0.dir/src/umba_crc_table.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/anton20241/rtc_work/master_slave_2dev_rs485/src/umba_crc_table.c > CMakeFiles/boost_client_0.dir/src/umba_crc_table.c.i
 
 CMakeFiles/boost_client_0.dir/src/umba_crc_table.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/boost_client_0.dir/src/umba_crc_table.c.s"
-	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/anton20241/rtc_work/master_slave_2dev_rs485/src/umba_crc_table.c -o CMakeFiles/boost_client_0.dir/src/umba_crc_table.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/anton20241/rtc_work/master_slave_2dev_rs485/src/umba_crc_table.c -o CMakeFiles/boost_client_0.dir/src/umba_crc_table.c.s
 
 # Object files for target boost_client_0
 boost_client_0_OBJECTS = \

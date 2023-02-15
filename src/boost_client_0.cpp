@@ -2,7 +2,7 @@
 #include <tabl_reg_config.hpp>
 #include <iostream>
 
-#define MY_DEVICE 0x02
+#define MY_DEVICE 0x01
 #define USBPORT_0 "/dev/ttyUSB0"
 #define USBPORT_1 "/dev/ttyUSB1"
 

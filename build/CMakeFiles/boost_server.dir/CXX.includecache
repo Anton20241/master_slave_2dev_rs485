@@ -82,3 +82,25 @@ tabl_reg_config.hpp
 iostream
 -
 
+/home/anton20241/rtc_work/master_slave_2dev_rs485/src/protocol.cpp
+protocol.hpp
+/home/anton20241/rtc_work/master_slave_2dev_rs485/src/protocol.hpp
+umba_crc_table.h
+/home/anton20241/rtc_work/master_slave_2dev_rs485/src/umba_crc_table.h
+assert.h
+-
+iostream
+-
+chrono
+-
+thread
+-
+cstring
+-
+
+/home/anton20241/rtc_work/master_slave_2dev_rs485/src/tabl_reg.cpp
+cstring
+-
+tabl_reg.hpp
+/home/anton20241/rtc_work/master_slave_2dev_rs485/src/tabl_reg.hpp
+

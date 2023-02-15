@@ -86,7 +86,7 @@ namespace boost_rs485
         {
             boost::system::error_code error;
             size_t sendBytes = m_port.write_some(boost::asio::buffer(ptrData, len), error);
-            if(!error){
+            if(!error && (sendBytes == ptrData[1])){
                 m_sendCount++;
                 printf("\n[I SEND]:\n"
                 "ptrData[0] = %u\n"
@@ -199,7 +199,7 @@ namespace boost_rs485
         {
             boost::system::error_code error;
             size_t sendBytes = s_port.write_some(boost::asio::buffer(ptrData, len), error);
-            if(!error){
+            if(!error && (sendBytes == ptrData[1])){
                 s_sendCount++;
                 printf("\n[I SEND]:\n"
                 "ptrData[0] = %u\n"
@@ -269,7 +269,7 @@ namespace boost_rs485
         {
             boost::system::error_code error;
             size_t sendBytes = sync_port.write_some(boost::asio::buffer(ptrData, len), error);
-            if(!error){
+            if(!error && (sendBytes == ptrData[1])){
                 sync_sendCount++;
                 printf("\n[I SEND]:\n"
                 "ptrData[0] = %u\n"

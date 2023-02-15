@@ -60,15 +60,15 @@ include CMakeFiles/serial_pub.dir/flags.make
 CMakeFiles/serial_pub.dir/src/serial_pub.cpp.o: CMakeFiles/serial_pub.dir/flags.make
 CMakeFiles/serial_pub.dir/src/serial_pub.cpp.o: ../src/serial_pub.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/serial_pub.dir/src/serial_pub.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/serial_pub.dir/src/serial_pub.cpp.o -c /home/anton20241/rtc_work/master_slave_2dev_rs485/src/serial_pub.cpp
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/serial_pub.dir/src/serial_pub.cpp.o -c /home/anton20241/rtc_work/master_slave_2dev_rs485/src/serial_pub.cpp
 
 CMakeFiles/serial_pub.dir/src/serial_pub.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/serial_pub.dir/src/serial_pub.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anton20241/rtc_work/master_slave_2dev_rs485/src/serial_pub.cpp > CMakeFiles/serial_pub.dir/src/serial_pub.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anton20241/rtc_work/master_slave_2dev_rs485/src/serial_pub.cpp > CMakeFiles/serial_pub.dir/src/serial_pub.cpp.i
 
 CMakeFiles/serial_pub.dir/src/serial_pub.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/serial_pub.dir/src/serial_pub.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anton20241/rtc_work/master_slave_2dev_rs485/src/serial_pub.cpp -o CMakeFiles/serial_pub.dir/src/serial_pub.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anton20241/rtc_work/master_slave_2dev_rs485/src/serial_pub.cpp -o CMakeFiles/serial_pub.dir/src/serial_pub.cpp.s
 
 # Object files for target serial_pub
 serial_pub_OBJECTS = \
