@@ -43,22 +43,7 @@ namespace boost_rs485
                 std::cout << "socket read returns: " + error.message();
                 m_recvd = true;
                 printf("\n[I RECEIVED]:\n"
-                "ptrData[0] = %u\n"
-                "ptrData[1] = %u\n"
-                "ptrData[2] = %u\n"
-                "ptrData[3] = %u\n"
-                "ptrData[4] = %u\n"
-                "ptrData[5] = %u\n"
-                "ptrData[6] = %u\n"
-                "ptrData[7] = %u\n"
-                "ptrData[8] = %u\n"
-                "ptrData[9] = %u\n"
-                "ptrData[10] = %u\n"
-                "ptrData[11] = %u\n"    
-                "ptrData[12] = %u\n"
-                "ptrData[13] = %u\n"
-                "ptrData[14] = %u\n"
-                "ptrData[15] = %u\n\n"
+                "[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\n\n"
                 "m_recvdCount = %u\n",
                 m_recvdData[0], m_recvdData[1], m_recvdData[2], m_recvdData[3],
                 m_recvdData[4], m_recvdData[5], m_recvdData[6], m_recvdData[7], 
@@ -89,22 +74,7 @@ namespace boost_rs485
             if(!error && (sendBytes == ptrData[1])){
                 m_sendCount++;
                 printf("\n[I SEND]:\n"
-                "ptrData[0] = %u\n"
-                "ptrData[1] = %u\n"
-                "ptrData[2] = %u\n"
-                "ptrData[3] = %u\n"
-                "ptrData[4] = %u\n"
-                "ptrData[5] = %u\n"
-                "ptrData[6] = %u\n"
-                "ptrData[7] = %u\n"
-                "ptrData[8] = %u\n"
-                "ptrData[9] = %u\n"
-                "ptrData[10] = %u\n"
-                "ptrData[11] = %u\n"
-                "ptrData[12] = %u\n"
-                "ptrData[13] = %u\n"
-                "ptrData[14] = %u\n"
-                "ptrData[15] = %u\n\n"
+                "[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\n\n"
                 "m_sendCount = %u\n",
                 ptrData[0], ptrData[1], ptrData[2], ptrData[3],
                 ptrData[4], ptrData[5], ptrData[6], ptrData[7], 
@@ -156,22 +126,7 @@ namespace boost_rs485
                 std::cout << "socket read returns: " + error.message();
                 s_recvd = true;
                 printf("\n[I RECEIVED]:\n"
-                "ptrData[0] = %u\n"
-                "ptrData[1] = %u\n"
-                "ptrData[2] = %u\n"
-                "ptrData[3] = %u\n"
-                "ptrData[4] = %u\n"
-                "ptrData[5] = %u\n"
-                "ptrData[6] = %u\n"
-                "ptrData[7] = %u\n"
-                "ptrData[8] = %u\n"
-                "ptrData[9] = %u\n"
-                "ptrData[10] = %u\n"
-                "ptrData[11] = %u\n"    
-                "ptrData[12] = %u\n"
-                "ptrData[13] = %u\n"
-                "ptrData[14] = %u\n"
-                "ptrData[15] = %u\n\n"
+                "[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\n\n"
                 "s_recvdCount = %u\n",
                 s_recvdData[0], s_recvdData[1], s_recvdData[2], s_recvdData[3],
                 s_recvdData[4], s_recvdData[5], s_recvdData[6], s_recvdData[7], 
@@ -202,22 +157,7 @@ namespace boost_rs485
             if(!error && (sendBytes == ptrData[1])){
                 s_sendCount++;
                 printf("\n[I SEND]:\n"
-                "ptrData[0] = %u\n"
-                "ptrData[1] = %u\n"
-                "ptrData[2] = %u\n"
-                "ptrData[3] = %u\n"
-                "ptrData[4] = %u\n"
-                "ptrData[5] = %u\n"
-                "ptrData[6] = %u\n"
-                "ptrData[7] = %u\n"
-                "ptrData[8] = %u\n"
-                "ptrData[9] = %u\n"
-                "ptrData[10] = %u\n"
-                "ptrData[11] = %u\n"
-                "ptrData[12] = %u\n"
-                "ptrData[13] = %u\n"
-                "ptrData[14] = %u\n"
-                "ptrData[15] = %u\n\n"
+                "[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\n\n"
                 "s_sendCount = %u\n",
                 ptrData[0], ptrData[1], ptrData[2], ptrData[3],
                 ptrData[4], ptrData[5], ptrData[6], ptrData[7], 
@@ -272,22 +212,7 @@ namespace boost_rs485
             if(!error && (sendBytes == ptrData[1])){
                 sync_sendCount++;
                 printf("\n[I SEND]:\n"
-                "ptrData[0] = %u\n"
-                "ptrData[1] = %u\n"
-                "ptrData[2] = %u\n"
-                "ptrData[3] = %u\n"
-                "ptrData[4] = %u\n"
-                "ptrData[5] = %u\n"
-                "ptrData[6] = %u\n"
-                "ptrData[7] = %u\n"
-                "ptrData[8] = %u\n"
-                "ptrData[9] = %u\n"
-                "ptrData[10] = %u\n"
-                "ptrData[11] = %u\n"
-                "ptrData[12] = %u\n"
-                "ptrData[13] = %u\n"
-                "ptrData[14] = %u\n"
-                "ptrData[15] = %u\n\n"
+                "[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\n\n"
                 "sync_sendCount = %u\n",
                 ptrData[0], ptrData[1], ptrData[2], ptrData[3],
                 ptrData[4], ptrData[5], ptrData[6], ptrData[7], 
@@ -308,23 +233,8 @@ namespace boost_rs485
                 sync_recvdCount++;
                 std::cout << "socket read returns: " + error.message();
                 printf("\n[I RECEIVED]:\n"
-                "ptrData[0] = %u\n"
-                "ptrData[1] = %u\n"
-                "ptrData[2] = %u\n"
-                "ptrData[3] = %u\n"
-                "ptrData[4] = %u\n"
-                "ptrData[5] = %u\n"
-                "ptrData[6] = %u\n"
-                "ptrData[7] = %u\n"
-                "ptrData[8] = %u\n"
-                "ptrData[9] = %u\n"
-                "ptrData[10] = %u\n"
-                "ptrData[11] = %u\n"    
-                "ptrData[12] = %u\n"
-                "ptrData[13] = %u\n"
-                "ptrData[14] = %u\n"
-                "ptrData[15] = %u\n\n"
-                "sync_recvdCount = %d\n",
+                "[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\t[%u]\n\n"
+                "sync_recvdCount = %u\n",
                 ptrData[0], ptrData[1], ptrData[2], ptrData[3],
                 ptrData[4], ptrData[5], ptrData[6], ptrData[7], 
                 ptrData[8], ptrData[9], ptrData[10], ptrData[11],
