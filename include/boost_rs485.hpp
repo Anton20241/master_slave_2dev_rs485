@@ -38,7 +38,7 @@ namespace boost_rs485
 
         void read_handler(const boost::system::error_code& error,size_t bytes_transferred)
         {
-            if(!error){
+            if(!error && (bytes_transferred == m_recvdData[1])){
                 m_recvdCount++;
                 std::cout << "socket read returns: " + error.message();
                 m_recvd = true;
@@ -64,7 +64,7 @@ namespace boost_rs485
                 m_recvdData[4], m_recvdData[5], m_recvdData[6], m_recvdData[7], 
                 m_recvdData[8], m_recvdData[9], m_recvdData[10], m_recvdData[11],
                 m_recvdData[12], m_recvdData[13], m_recvdData[14], m_recvdData[15], m_recvdCount);
-                cout << " bytes_transferred: "<< bytes_transferred << endl << endl;
+                cout << "bytes_transferred: "<< bytes_transferred << endl << endl;
             }
             getData();
         }
@@ -151,7 +151,7 @@ namespace boost_rs485
 
         void read_handler(const boost::system::error_code& error,size_t bytes_transferred)
         {
-            if(!error){
+            if(!error && (bytes_transferred == s_recvdData[1])){
                 s_recvdCount++;
                 std::cout << "socket read returns: " + error.message();
                 s_recvd = true;
@@ -177,7 +177,7 @@ namespace boost_rs485
                 s_recvdData[4], s_recvdData[5], s_recvdData[6], s_recvdData[7], 
                 s_recvdData[8], s_recvdData[9], s_recvdData[10], s_recvdData[11],
                 s_recvdData[12], s_recvdData[13], s_recvdData[14], s_recvdData[15], s_recvdCount);
-                cout << " bytes_transferred: "<< bytes_transferred << endl << endl;
+                cout << "bytes_transferred: "<< bytes_transferred << endl << endl;
             }
             getData();
         }
@@ -304,7 +304,7 @@ namespace boost_rs485
         {
             boost::system::error_code error;
             size_t recvdBytes = sync_port.read_some(boost::asio::buffer(ptrData, sizeof(ptrData)), error);
-            if(!error){
+            if(!error && (recvdBytes == ptrData[1])){
                 sync_recvdCount++;
                 std::cout << "socket read returns: " + error.message();
                 printf("\n[I RECEIVED]:\n"
@@ -329,7 +329,7 @@ namespace boost_rs485
                 ptrData[4], ptrData[5], ptrData[6], ptrData[7], 
                 ptrData[8], ptrData[9], ptrData[10], ptrData[11],
                 ptrData[12], ptrData[13], ptrData[14], ptrData[15], sync_recvdCount);
-                cout << " recvdBytes: "<< recvdBytes << endl << endl;
+                cout << "recvdBytes: "<< recvdBytes << endl << endl;
                 return true;
             } else {
                 //std::cerr << error.what();

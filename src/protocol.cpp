@@ -118,7 +118,7 @@ namespace protocol
                     sendError(errLen, ptrBuff);
                 }
                 /* Отправляем зеркало */
-                assert(m_transport.sendData(ptrBuff, len));
+                assert(m_transport.sendData(ptrBuff, packLenMin)); //len -> packLenMin
                 break;
             case cmdRead:
                 if (m_len != packLenMin) {
@@ -280,7 +280,7 @@ namespace protocol_master
         /* Отправляем NOP */
         assert(m_transport.sendData(buff, len));
         /* Ждем зеркало */
-        std::this_thread::sleep_for(std::chrono::microseconds(1600));
+        std::this_thread::sleep_for(std::chrono::microseconds(1000));
 
         if (!m_transport.getData(recvdBuff, &len)) return false;
         if (buff[0] != recvdBuff[0]) return false;
