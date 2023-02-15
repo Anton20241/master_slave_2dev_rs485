@@ -1,6 +1,8 @@
 #include <boost/asio.hpp>
 #include <iostream>
 #include <protocol.hpp>
+#include <chrono>
+#include <thread>
 
 #define BUFSIZE 256
 #define BOUDRATE 230400

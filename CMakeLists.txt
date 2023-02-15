@@ -48,7 +48,7 @@ set(CLIENT_SRC_1 src/boost_client_1.cpp
 set(Boost_USE_STATIC_LIBS OFF)
 set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
-find_package(Boost 1.71.0 COMPONENTS thread REQUIRED)
+find_package(Boost COMPONENTS thread REQUIRED)
 if(Boost_FOUND)
 include_directories(${Boost_INCLUDE_DIRS})
 

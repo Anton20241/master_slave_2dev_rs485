@@ -8,6 +8,7 @@
 #include "protocol.hpp"
 #include "umba_crc_table.h"
 #include <chrono>
+#include <thread>
 
 class Boost_RS485_Server
 {

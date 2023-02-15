@@ -5,6 +5,8 @@
 #include <boost/bind.hpp>
 #include <boost/thread.hpp>
 #include <chrono>
+#include <thread>
+
 #define BOUDRATE 230400
 #define DEVICE "/dev/ttyUSB0"
 
