@@ -113,7 +113,7 @@ namespace boost_rs485
     };
     
 /////////////////////////////////////////////////////////////////
-    class Boost_RS485_Slave : public i_transport::ITransport
+    class Boost_RS485_Slave_async : public i_transport::ITransport
     {
     private:
         boost::asio::io_service    s_ioService;
@@ -143,7 +143,7 @@ namespace boost_rs485
         }
 
     public:
-        Boost_RS485_Slave(std::string dev_name):s_ioService(),s_port(s_ioService, dev_name)
+        Boost_RS485_Slave_async(std::string dev_name):s_ioService(),s_port(s_ioService, dev_name)
         {
             s_port.set_option(boost::asio::serial_port_base::baud_rate(BOUDRATE));
             s_port.set_option(boost::asio::serial_port_base::character_size(8));
@@ -189,14 +189,14 @@ namespace boost_rs485
         void getData(){
             std::memset(s_recvdData, 0, sizeof(s_recvdData));
             s_port.async_read_some(boost::asio::buffer(s_recvdData, sizeof(s_recvdData)),
-                    boost::bind(&Boost_RS485_Slave::read_handler,this,
+                    boost::bind(&Boost_RS485_Slave_async::read_handler,this,
                             boost::asio::placeholders::error,
                             boost::asio::placeholders::bytes_transferred));
         }
 
         bool transportReset() {return true;}
             
-        ~Boost_RS485_Slave() override {};
+        ~Boost_RS485_Slave_async() override {};
     };
 
 /////////////////////////////////////////////////////////////////

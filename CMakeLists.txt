@@ -18,7 +18,7 @@ set(SERVER_SRC src/boost_server.cpp
             include/tabl_reg_config.hpp
             include/umba_crc_table.h)
 
-set(CLIENT_SRC_0 src/boost_client_0.cpp
+set(CLIENT_SRC_0 src/boost_client_async.cpp
                 src/boost_rs485.cpp
                 src/boost_rs485_ClientServer.cpp
                 src/protocol.cpp
@@ -32,7 +32,7 @@ set(CLIENT_SRC_0 src/boost_client_0.cpp
                 include/tabl_reg_config.hpp
                 include/umba_crc_table.h)
                 
-set(CLIENT_SRC_1 src/boost_client_1.cpp
+set(CLIENT_SRC_1 src/boost_client_sync.cpp
                 src/boost_rs485.cpp
                 src/boost_rs485_ClientServer.cpp
                 src/protocol.cpp
@@ -70,13 +70,13 @@ add_executable( boost_server ${SERVER_SRC})
 target_include_directories (boost_server PRIVATE include/ src/)
 target_link_libraries( boost_server ${Boost_LIBRARIES})
 
-add_executable( boost_client_0 ${CLIENT_SRC_0})
-target_include_directories (boost_client_0 PRIVATE include/ src/)
-target_link_libraries( boost_client_0 ${Boost_LIBRARIES} )
+add_executable( boost_client_async ${CLIENT_SRC_0})
+target_include_directories (boost_client_async PRIVATE include/ src/)
+target_link_libraries( boost_client_async ${Boost_LIBRARIES} )
 
-add_executable( boost_client_1 ${CLIENT_SRC_1})
-target_include_directories (boost_client_1 PRIVATE include/ src/)
-target_link_libraries( boost_client_1 ${Boost_LIBRARIES} )
+add_executable( boost_client_sync ${CLIENT_SRC_1})
+target_include_directories (boost_client_sync PRIVATE include/ src/)
+target_link_libraries( boost_client_sync ${Boost_LIBRARIES} )
 endif()
 
 set(CMAKE_THREAD_LIBS_INIT "-lpthread")
@@ -91,8 +91,8 @@ set(THREADS_PREFER_PTHREAD_FLAG ON)
 if(OpenCV_FOUND)
 include_directories(${OpenCV_INCLUDE_DIRS})
 target_link_libraries( boost_server ${OpenCV_LIBS})
-target_link_libraries( boost_client_0 ${OpenCV_LIBS})
-target_link_libraries( boost_client_1 ${OpenCV_LIBS})
+target_link_libraries( boost_client_async ${OpenCV_LIBS})
+target_link_libraries( boost_client_sync ${OpenCV_LIBS})
 target_link_libraries( serial_pub ${OpenCV_LIBS})
 target_link_libraries( serial_sub ${OpenCV_LIBS})
 target_link_libraries( serial_sub_async ${OpenCV_LIBS})

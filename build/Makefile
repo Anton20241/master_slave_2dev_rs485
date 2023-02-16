@@ -111,30 +111,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named boost_client_1
+# Target rules for targets named boost_client_sync
 
 # Build rule for target.
-boost_client_1: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 boost_client_1
-.PHONY : boost_client_1
+boost_client_sync: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 boost_client_sync
+.PHONY : boost_client_sync
 
 # fast build rule for target.
-boost_client_1/fast:
-	$(MAKE) -f CMakeFiles/boost_client_1.dir/build.make CMakeFiles/boost_client_1.dir/build
-.PHONY : boost_client_1/fast
+boost_client_sync/fast:
+	$(MAKE) -f CMakeFiles/boost_client_sync.dir/build.make CMakeFiles/boost_client_sync.dir/build
+.PHONY : boost_client_sync/fast
 
 #=============================================================================
-# Target rules for targets named boost_client_0
+# Target rules for targets named boost_client_async
 
 # Build rule for target.
-boost_client_0: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 boost_client_0
-.PHONY : boost_client_0
+boost_client_async: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 boost_client_async
+.PHONY : boost_client_async
 
 # fast build rule for target.
-boost_client_0/fast:
-	$(MAKE) -f CMakeFiles/boost_client_0.dir/build.make CMakeFiles/boost_client_0.dir/build
-.PHONY : boost_client_0/fast
+boost_client_async/fast:
+	$(MAKE) -f CMakeFiles/boost_client_async.dir/build.make CMakeFiles/boost_client_async.dir/build
+.PHONY : boost_client_async/fast
 
 #=============================================================================
 # Target rules for targets named boost_server
@@ -188,59 +188,59 @@ serial_pub/fast:
 	$(MAKE) -f CMakeFiles/serial_pub.dir/build.make CMakeFiles/serial_pub.dir/build
 .PHONY : serial_pub/fast
 
-src/boost_client_0.o: src/boost_client_0.cpp.o
+src/boost_client_async.o: src/boost_client_async.cpp.o
 
-.PHONY : src/boost_client_0.o
-
-# target to build an object file
-src/boost_client_0.cpp.o:
-	$(MAKE) -f CMakeFiles/boost_client_0.dir/build.make CMakeFiles/boost_client_0.dir/src/boost_client_0.cpp.o
-.PHONY : src/boost_client_0.cpp.o
-
-src/boost_client_0.i: src/boost_client_0.cpp.i
-
-.PHONY : src/boost_client_0.i
-
-# target to preprocess a source file
-src/boost_client_0.cpp.i:
-	$(MAKE) -f CMakeFiles/boost_client_0.dir/build.make CMakeFiles/boost_client_0.dir/src/boost_client_0.cpp.i
-.PHONY : src/boost_client_0.cpp.i
-
-src/boost_client_0.s: src/boost_client_0.cpp.s
-
-.PHONY : src/boost_client_0.s
-
-# target to generate assembly for a file
-src/boost_client_0.cpp.s:
-	$(MAKE) -f CMakeFiles/boost_client_0.dir/build.make CMakeFiles/boost_client_0.dir/src/boost_client_0.cpp.s
-.PHONY : src/boost_client_0.cpp.s
-
-src/boost_client_1.o: src/boost_client_1.cpp.o
-
-.PHONY : src/boost_client_1.o
+.PHONY : src/boost_client_async.o
 
 # target to build an object file
-src/boost_client_1.cpp.o:
-	$(MAKE) -f CMakeFiles/boost_client_1.dir/build.make CMakeFiles/boost_client_1.dir/src/boost_client_1.cpp.o
-.PHONY : src/boost_client_1.cpp.o
+src/boost_client_async.cpp.o:
+	$(MAKE) -f CMakeFiles/boost_client_async.dir/build.make CMakeFiles/boost_client_async.dir/src/boost_client_async.cpp.o
+.PHONY : src/boost_client_async.cpp.o
 
-src/boost_client_1.i: src/boost_client_1.cpp.i
+src/boost_client_async.i: src/boost_client_async.cpp.i
 
-.PHONY : src/boost_client_1.i
+.PHONY : src/boost_client_async.i
 
 # target to preprocess a source file
-src/boost_client_1.cpp.i:
-	$(MAKE) -f CMakeFiles/boost_client_1.dir/build.make CMakeFiles/boost_client_1.dir/src/boost_client_1.cpp.i
-.PHONY : src/boost_client_1.cpp.i
+src/boost_client_async.cpp.i:
+	$(MAKE) -f CMakeFiles/boost_client_async.dir/build.make CMakeFiles/boost_client_async.dir/src/boost_client_async.cpp.i
+.PHONY : src/boost_client_async.cpp.i
 
-src/boost_client_1.s: src/boost_client_1.cpp.s
+src/boost_client_async.s: src/boost_client_async.cpp.s
 
-.PHONY : src/boost_client_1.s
+.PHONY : src/boost_client_async.s
 
 # target to generate assembly for a file
-src/boost_client_1.cpp.s:
-	$(MAKE) -f CMakeFiles/boost_client_1.dir/build.make CMakeFiles/boost_client_1.dir/src/boost_client_1.cpp.s
-.PHONY : src/boost_client_1.cpp.s
+src/boost_client_async.cpp.s:
+	$(MAKE) -f CMakeFiles/boost_client_async.dir/build.make CMakeFiles/boost_client_async.dir/src/boost_client_async.cpp.s
+.PHONY : src/boost_client_async.cpp.s
+
+src/boost_client_sync.o: src/boost_client_sync.cpp.o
+
+.PHONY : src/boost_client_sync.o
+
+# target to build an object file
+src/boost_client_sync.cpp.o:
+	$(MAKE) -f CMakeFiles/boost_client_sync.dir/build.make CMakeFiles/boost_client_sync.dir/src/boost_client_sync.cpp.o
+.PHONY : src/boost_client_sync.cpp.o
+
+src/boost_client_sync.i: src/boost_client_sync.cpp.i
+
+.PHONY : src/boost_client_sync.i
+
+# target to preprocess a source file
+src/boost_client_sync.cpp.i:
+	$(MAKE) -f CMakeFiles/boost_client_sync.dir/build.make CMakeFiles/boost_client_sync.dir/src/boost_client_sync.cpp.i
+.PHONY : src/boost_client_sync.cpp.i
+
+src/boost_client_sync.s: src/boost_client_sync.cpp.s
+
+.PHONY : src/boost_client_sync.s
+
+# target to generate assembly for a file
+src/boost_client_sync.cpp.s:
+	$(MAKE) -f CMakeFiles/boost_client_sync.dir/build.make CMakeFiles/boost_client_sync.dir/src/boost_client_sync.cpp.s
+.PHONY : src/boost_client_sync.cpp.s
 
 src/boost_rs485.o: src/boost_rs485.cpp.o
 
@@ -248,8 +248,8 @@ src/boost_rs485.o: src/boost_rs485.cpp.o
 
 # target to build an object file
 src/boost_rs485.cpp.o:
-	$(MAKE) -f CMakeFiles/boost_client_1.dir/build.make CMakeFiles/boost_client_1.dir/src/boost_rs485.cpp.o
-	$(MAKE) -f CMakeFiles/boost_client_0.dir/build.make CMakeFiles/boost_client_0.dir/src/boost_rs485.cpp.o
+	$(MAKE) -f CMakeFiles/boost_client_sync.dir/build.make CMakeFiles/boost_client_sync.dir/src/boost_rs485.cpp.o
+	$(MAKE) -f CMakeFiles/boost_client_async.dir/build.make CMakeFiles/boost_client_async.dir/src/boost_rs485.cpp.o
 	$(MAKE) -f CMakeFiles/boost_server.dir/build.make CMakeFiles/boost_server.dir/src/boost_rs485.cpp.o
 .PHONY : src/boost_rs485.cpp.o
 
@@ -259,8 +259,8 @@ src/boost_rs485.i: src/boost_rs485.cpp.i
 
 # target to preprocess a source file
 src/boost_rs485.cpp.i:
-	$(MAKE) -f CMakeFiles/boost_client_1.dir/build.make CMakeFiles/boost_client_1.dir/src/boost_rs485.cpp.i
-	$(MAKE) -f CMakeFiles/boost_client_0.dir/build.make CMakeFiles/boost_client_0.dir/src/boost_rs485.cpp.i
+	$(MAKE) -f CMakeFiles/boost_client_sync.dir/build.make CMakeFiles/boost_client_sync.dir/src/boost_rs485.cpp.i
+	$(MAKE) -f CMakeFiles/boost_client_async.dir/build.make CMakeFiles/boost_client_async.dir/src/boost_rs485.cpp.i
 	$(MAKE) -f CMakeFiles/boost_server.dir/build.make CMakeFiles/boost_server.dir/src/boost_rs485.cpp.i
 .PHONY : src/boost_rs485.cpp.i
 
@@ -270,8 +270,8 @@ src/boost_rs485.s: src/boost_rs485.cpp.s
 
 # target to generate assembly for a file
 src/boost_rs485.cpp.s:
-	$(MAKE) -f CMakeFiles/boost_client_1.dir/build.make CMakeFiles/boost_client_1.dir/src/boost_rs485.cpp.s
-	$(MAKE) -f CMakeFiles/boost_client_0.dir/build.make CMakeFiles/boost_client_0.dir/src/boost_rs485.cpp.s
+	$(MAKE) -f CMakeFiles/boost_client_sync.dir/build.make CMakeFiles/boost_client_sync.dir/src/boost_rs485.cpp.s
+	$(MAKE) -f CMakeFiles/boost_client_async.dir/build.make CMakeFiles/boost_client_async.dir/src/boost_rs485.cpp.s
 	$(MAKE) -f CMakeFiles/boost_server.dir/build.make CMakeFiles/boost_server.dir/src/boost_rs485.cpp.s
 .PHONY : src/boost_rs485.cpp.s
 
@@ -281,8 +281,8 @@ src/boost_rs485_ClientServer.o: src/boost_rs485_ClientServer.cpp.o
 
 # target to build an object file
 src/boost_rs485_ClientServer.cpp.o:
-	$(MAKE) -f CMakeFiles/boost_client_1.dir/build.make CMakeFiles/boost_client_1.dir/src/boost_rs485_ClientServer.cpp.o
-	$(MAKE) -f CMakeFiles/boost_client_0.dir/build.make CMakeFiles/boost_client_0.dir/src/boost_rs485_ClientServer.cpp.o
+	$(MAKE) -f CMakeFiles/boost_client_sync.dir/build.make CMakeFiles/boost_client_sync.dir/src/boost_rs485_ClientServer.cpp.o
+	$(MAKE) -f CMakeFiles/boost_client_async.dir/build.make CMakeFiles/boost_client_async.dir/src/boost_rs485_ClientServer.cpp.o
 	$(MAKE) -f CMakeFiles/boost_server.dir/build.make CMakeFiles/boost_server.dir/src/boost_rs485_ClientServer.cpp.o
 .PHONY : src/boost_rs485_ClientServer.cpp.o
 
@@ -292,8 +292,8 @@ src/boost_rs485_ClientServer.i: src/boost_rs485_ClientServer.cpp.i
 
 # target to preprocess a source file
 src/boost_rs485_ClientServer.cpp.i:
-	$(MAKE) -f CMakeFiles/boost_client_1.dir/build.make CMakeFiles/boost_client_1.dir/src/boost_rs485_ClientServer.cpp.i
-	$(MAKE) -f CMakeFiles/boost_client_0.dir/build.make CMakeFiles/boost_client_0.dir/src/boost_rs485_ClientServer.cpp.i
+	$(MAKE) -f CMakeFiles/boost_client_sync.dir/build.make CMakeFiles/boost_client_sync.dir/src/boost_rs485_ClientServer.cpp.i
+	$(MAKE) -f CMakeFiles/boost_client_async.dir/build.make CMakeFiles/boost_client_async.dir/src/boost_rs485_ClientServer.cpp.i
 	$(MAKE) -f CMakeFiles/boost_server.dir/build.make CMakeFiles/boost_server.dir/src/boost_rs485_ClientServer.cpp.i
 .PHONY : src/boost_rs485_ClientServer.cpp.i
 
@@ -303,8 +303,8 @@ src/boost_rs485_ClientServer.s: src/boost_rs485_ClientServer.cpp.s
 
 # target to generate assembly for a file
 src/boost_rs485_ClientServer.cpp.s:
-	$(MAKE) -f CMakeFiles/boost_client_1.dir/build.make CMakeFiles/boost_client_1.dir/src/boost_rs485_ClientServer.cpp.s
-	$(MAKE) -f CMakeFiles/boost_client_0.dir/build.make CMakeFiles/boost_client_0.dir/src/boost_rs485_ClientServer.cpp.s
+	$(MAKE) -f CMakeFiles/boost_client_sync.dir/build.make CMakeFiles/boost_client_sync.dir/src/boost_rs485_ClientServer.cpp.s
+	$(MAKE) -f CMakeFiles/boost_client_async.dir/build.make CMakeFiles/boost_client_async.dir/src/boost_rs485_ClientServer.cpp.s
 	$(MAKE) -f CMakeFiles/boost_server.dir/build.make CMakeFiles/boost_server.dir/src/boost_rs485_ClientServer.cpp.s
 .PHONY : src/boost_rs485_ClientServer.cpp.s
 
@@ -341,8 +341,8 @@ src/protocol.o: src/protocol.cpp.o
 
 # target to build an object file
 src/protocol.cpp.o:
-	$(MAKE) -f CMakeFiles/boost_client_1.dir/build.make CMakeFiles/boost_client_1.dir/src/protocol.cpp.o
-	$(MAKE) -f CMakeFiles/boost_client_0.dir/build.make CMakeFiles/boost_client_0.dir/src/protocol.cpp.o
+	$(MAKE) -f CMakeFiles/boost_client_sync.dir/build.make CMakeFiles/boost_client_sync.dir/src/protocol.cpp.o
+	$(MAKE) -f CMakeFiles/boost_client_async.dir/build.make CMakeFiles/boost_client_async.dir/src/protocol.cpp.o
 	$(MAKE) -f CMakeFiles/boost_server.dir/build.make CMakeFiles/boost_server.dir/src/protocol.cpp.o
 .PHONY : src/protocol.cpp.o
 
@@ -352,8 +352,8 @@ src/protocol.i: src/protocol.cpp.i
 
 # target to preprocess a source file
 src/protocol.cpp.i:
-	$(MAKE) -f CMakeFiles/boost_client_1.dir/build.make CMakeFiles/boost_client_1.dir/src/protocol.cpp.i
-	$(MAKE) -f CMakeFiles/boost_client_0.dir/build.make CMakeFiles/boost_client_0.dir/src/protocol.cpp.i
+	$(MAKE) -f CMakeFiles/boost_client_sync.dir/build.make CMakeFiles/boost_client_sync.dir/src/protocol.cpp.i
+	$(MAKE) -f CMakeFiles/boost_client_async.dir/build.make CMakeFiles/boost_client_async.dir/src/protocol.cpp.i
 	$(MAKE) -f CMakeFiles/boost_server.dir/build.make CMakeFiles/boost_server.dir/src/protocol.cpp.i
 .PHONY : src/protocol.cpp.i
 
@@ -363,8 +363,8 @@ src/protocol.s: src/protocol.cpp.s
 
 # target to generate assembly for a file
 src/protocol.cpp.s:
-	$(MAKE) -f CMakeFiles/boost_client_1.dir/build.make CMakeFiles/boost_client_1.dir/src/protocol.cpp.s
-	$(MAKE) -f CMakeFiles/boost_client_0.dir/build.make CMakeFiles/boost_client_0.dir/src/protocol.cpp.s
+	$(MAKE) -f CMakeFiles/boost_client_sync.dir/build.make CMakeFiles/boost_client_sync.dir/src/protocol.cpp.s
+	$(MAKE) -f CMakeFiles/boost_client_async.dir/build.make CMakeFiles/boost_client_async.dir/src/protocol.cpp.s
 	$(MAKE) -f CMakeFiles/boost_server.dir/build.make CMakeFiles/boost_server.dir/src/protocol.cpp.s
 .PHONY : src/protocol.cpp.s
 
@@ -455,8 +455,8 @@ src/tabl_reg.o: src/tabl_reg.cpp.o
 
 # target to build an object file
 src/tabl_reg.cpp.o:
-	$(MAKE) -f CMakeFiles/boost_client_1.dir/build.make CMakeFiles/boost_client_1.dir/src/tabl_reg.cpp.o
-	$(MAKE) -f CMakeFiles/boost_client_0.dir/build.make CMakeFiles/boost_client_0.dir/src/tabl_reg.cpp.o
+	$(MAKE) -f CMakeFiles/boost_client_sync.dir/build.make CMakeFiles/boost_client_sync.dir/src/tabl_reg.cpp.o
+	$(MAKE) -f CMakeFiles/boost_client_async.dir/build.make CMakeFiles/boost_client_async.dir/src/tabl_reg.cpp.o
 	$(MAKE) -f CMakeFiles/boost_server.dir/build.make CMakeFiles/boost_server.dir/src/tabl_reg.cpp.o
 .PHONY : src/tabl_reg.cpp.o
 
@@ -466,8 +466,8 @@ src/tabl_reg.i: src/tabl_reg.cpp.i
 
 # target to preprocess a source file
 src/tabl_reg.cpp.i:
-	$(MAKE) -f CMakeFiles/boost_client_1.dir/build.make CMakeFiles/boost_client_1.dir/src/tabl_reg.cpp.i
-	$(MAKE) -f CMakeFiles/boost_client_0.dir/build.make CMakeFiles/boost_client_0.dir/src/tabl_reg.cpp.i
+	$(MAKE) -f CMakeFiles/boost_client_sync.dir/build.make CMakeFiles/boost_client_sync.dir/src/tabl_reg.cpp.i
+	$(MAKE) -f CMakeFiles/boost_client_async.dir/build.make CMakeFiles/boost_client_async.dir/src/tabl_reg.cpp.i
 	$(MAKE) -f CMakeFiles/boost_server.dir/build.make CMakeFiles/boost_server.dir/src/tabl_reg.cpp.i
 .PHONY : src/tabl_reg.cpp.i
 
@@ -477,8 +477,8 @@ src/tabl_reg.s: src/tabl_reg.cpp.s
 
 # target to generate assembly for a file
 src/tabl_reg.cpp.s:
-	$(MAKE) -f CMakeFiles/boost_client_1.dir/build.make CMakeFiles/boost_client_1.dir/src/tabl_reg.cpp.s
-	$(MAKE) -f CMakeFiles/boost_client_0.dir/build.make CMakeFiles/boost_client_0.dir/src/tabl_reg.cpp.s
+	$(MAKE) -f CMakeFiles/boost_client_sync.dir/build.make CMakeFiles/boost_client_sync.dir/src/tabl_reg.cpp.s
+	$(MAKE) -f CMakeFiles/boost_client_async.dir/build.make CMakeFiles/boost_client_async.dir/src/tabl_reg.cpp.s
 	$(MAKE) -f CMakeFiles/boost_server.dir/build.make CMakeFiles/boost_server.dir/src/tabl_reg.cpp.s
 .PHONY : src/tabl_reg.cpp.s
 
@@ -488,8 +488,8 @@ src/umba_crc_table.o: src/umba_crc_table.c.o
 
 # target to build an object file
 src/umba_crc_table.c.o:
-	$(MAKE) -f CMakeFiles/boost_client_1.dir/build.make CMakeFiles/boost_client_1.dir/src/umba_crc_table.c.o
-	$(MAKE) -f CMakeFiles/boost_client_0.dir/build.make CMakeFiles/boost_client_0.dir/src/umba_crc_table.c.o
+	$(MAKE) -f CMakeFiles/boost_client_sync.dir/build.make CMakeFiles/boost_client_sync.dir/src/umba_crc_table.c.o
+	$(MAKE) -f CMakeFiles/boost_client_async.dir/build.make CMakeFiles/boost_client_async.dir/src/umba_crc_table.c.o
 	$(MAKE) -f CMakeFiles/boost_server.dir/build.make CMakeFiles/boost_server.dir/src/umba_crc_table.c.o
 .PHONY : src/umba_crc_table.c.o
 
@@ -499,8 +499,8 @@ src/umba_crc_table.i: src/umba_crc_table.c.i
 
 # target to preprocess a source file
 src/umba_crc_table.c.i:
-	$(MAKE) -f CMakeFiles/boost_client_1.dir/build.make CMakeFiles/boost_client_1.dir/src/umba_crc_table.c.i
-	$(MAKE) -f CMakeFiles/boost_client_0.dir/build.make CMakeFiles/boost_client_0.dir/src/umba_crc_table.c.i
+	$(MAKE) -f CMakeFiles/boost_client_sync.dir/build.make CMakeFiles/boost_client_sync.dir/src/umba_crc_table.c.i
+	$(MAKE) -f CMakeFiles/boost_client_async.dir/build.make CMakeFiles/boost_client_async.dir/src/umba_crc_table.c.i
 	$(MAKE) -f CMakeFiles/boost_server.dir/build.make CMakeFiles/boost_server.dir/src/umba_crc_table.c.i
 .PHONY : src/umba_crc_table.c.i
 
@@ -510,8 +510,8 @@ src/umba_crc_table.s: src/umba_crc_table.c.s
 
 # target to generate assembly for a file
 src/umba_crc_table.c.s:
-	$(MAKE) -f CMakeFiles/boost_client_1.dir/build.make CMakeFiles/boost_client_1.dir/src/umba_crc_table.c.s
-	$(MAKE) -f CMakeFiles/boost_client_0.dir/build.make CMakeFiles/boost_client_0.dir/src/umba_crc_table.c.s
+	$(MAKE) -f CMakeFiles/boost_client_sync.dir/build.make CMakeFiles/boost_client_sync.dir/src/umba_crc_table.c.s
+	$(MAKE) -f CMakeFiles/boost_client_async.dir/build.make CMakeFiles/boost_client_async.dir/src/umba_crc_table.c.s
 	$(MAKE) -f CMakeFiles/boost_server.dir/build.make CMakeFiles/boost_server.dir/src/umba_crc_table.c.s
 .PHONY : src/umba_crc_table.c.s
 
@@ -521,20 +521,20 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... boost_client_1"
 	@echo "... edit_cache"
-	@echo "... boost_client_0"
+	@echo "... boost_client_sync"
 	@echo "... rebuild_cache"
+	@echo "... boost_client_async"
 	@echo "... boost_server"
 	@echo "... serial_sub_async"
 	@echo "... serial_sub"
 	@echo "... serial_pub"
-	@echo "... src/boost_client_0.o"
-	@echo "... src/boost_client_0.i"
-	@echo "... src/boost_client_0.s"
-	@echo "... src/boost_client_1.o"
-	@echo "... src/boost_client_1.i"
-	@echo "... src/boost_client_1.s"
+	@echo "... src/boost_client_async.o"
+	@echo "... src/boost_client_async.i"
+	@echo "... src/boost_client_async.s"
+	@echo "... src/boost_client_sync.o"
+	@echo "... src/boost_client_sync.i"
+	@echo "... src/boost_client_sync.s"
 	@echo "... src/boost_rs485.o"
 	@echo "... src/boost_rs485.i"
 	@echo "... src/boost_rs485.s"

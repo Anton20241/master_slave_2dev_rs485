@@ -143,8 +143,8 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/boost_client_1.dir/DependInfo.cmake"
-  "CMakeFiles/boost_client_0.dir/DependInfo.cmake"
+  "CMakeFiles/boost_client_sync.dir/DependInfo.cmake"
+  "CMakeFiles/boost_client_async.dir/DependInfo.cmake"
   "CMakeFiles/boost_server.dir/DependInfo.cmake"
   "CMakeFiles/serial_sub_async.dir/DependInfo.cmake"
   "CMakeFiles/serial_sub.dir/DependInfo.cmake"
