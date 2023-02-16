@@ -27,7 +27,7 @@ public:
         std::vector <bool> answRecvd(device.size(), 0);
         std::vector <size_t> answRecvdFailedCount(device.size(), 0);
         int low_C_S_Time = 0;
-        int high_C_S_Time = 20000;
+        int high_C_S_Time = 3800;
         //create trackbars
         cv::namedWindow("Trackbars");
         cv::createTrackbar("C_S_Time", "Trackbars", &low_C_S_Time, high_C_S_Time);

@@ -44,11 +44,12 @@ namespace boost_rs485
                 std::cout << "\nport read returns: " + error.message();
                 printf("\n[I RECEIVED]:\n"
                 "[%u][%u][%u][%u\t][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u]\n"
-                "m_recvdCount = %u\n",
+                "m_recvdCount = %u\n"
+                "m_sendCount = %u\n",
                 m_recvdData[0], m_recvdData[1], m_recvdData[2], m_recvdData[3],
                 m_recvdData[4], m_recvdData[5], m_recvdData[6], m_recvdData[7], 
                 m_recvdData[8], m_recvdData[9], m_recvdData[10], m_recvdData[11],
-                m_recvdData[12], m_recvdData[13], m_recvdData[14], m_recvdData[15], m_recvdCount);
+                m_recvdData[12], m_recvdData[13], m_recvdData[14], m_recvdData[15], m_recvdCount, m_sendCount);
                 cout << "bytes_transferred: "<< bytes_transferred << endl;
             }
             getData();
@@ -76,11 +77,12 @@ namespace boost_rs485
                 std::cout << "\nport write returns: " + error.message();
                 printf("\n[I SEND]:\n"
                 "[%u][%u][%u][%u\t][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u]\n"
+                "m_recvdCount = %u\n"
                 "m_sendCount = %u\n",
                 ptrData[0], ptrData[1], ptrData[2], ptrData[3],
                 ptrData[4], ptrData[5], ptrData[6], ptrData[7], 
                 ptrData[8], ptrData[9], ptrData[10], ptrData[11],
-                ptrData[12], ptrData[13], ptrData[14], ptrData[15], m_sendCount);
+                ptrData[12], ptrData[13], ptrData[14], ptrData[15], m_recvdCount, m_sendCount);
                 cout << "sendBytes: "<< sendBytes << endl;
                 return true;
             } else {
@@ -129,11 +131,12 @@ namespace boost_rs485
                 s_recvd = true;
                 printf("\n[I RECEIVED]:\n"
                 "[%u][%u][%u][%u\t][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u]\n"
-                "s_recvdCount = %u\n",
+                "s_recvdCount = %u\n"
+                "s_sendCount = %u\n",
                 s_recvdData[0], s_recvdData[1], s_recvdData[2], s_recvdData[3],
                 s_recvdData[4], s_recvdData[5], s_recvdData[6], s_recvdData[7], 
                 s_recvdData[8], s_recvdData[9], s_recvdData[10], s_recvdData[11],
-                s_recvdData[12], s_recvdData[13], s_recvdData[14], s_recvdData[15], s_recvdCount);
+                s_recvdData[12], s_recvdData[13], s_recvdData[14], s_recvdData[15], s_recvdCount, s_sendCount);
                 cout << "bytes_transferred: "<< bytes_transferred << endl;
             }
             getData();
@@ -161,11 +164,12 @@ namespace boost_rs485
                 std::cout << "\nport write returns: " + error.message();
                 printf("\n[I SEND]:\n"
                 "[%u][%u][%u][%u\t][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u]\n"
+                "s_recvdCount = %u\n"
                 "s_sendCount = %u\n",
                 ptrData[0], ptrData[1], ptrData[2], ptrData[3],
                 ptrData[4], ptrData[5], ptrData[6], ptrData[7], 
                 ptrData[8], ptrData[9], ptrData[10], ptrData[11],
-                ptrData[12], ptrData[13], ptrData[14], ptrData[15], s_sendCount);
+                ptrData[12], ptrData[13], ptrData[14], ptrData[15], s_recvdCount, s_sendCount);
                 cout << "sendBytes: "<< sendBytes << endl;
                 return true;
             } else {
@@ -218,11 +222,12 @@ namespace boost_rs485
                 std::cout << "\nport write returns: " + error.message();
                 printf("\n[I SEND]:\n"
                 "[%u][%u][%u][%u\t][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u]\n"
+                "sync_recvdCount = %u\n"
                 "sync_sendCount = %u\n",
                 ptrData[0], ptrData[1], ptrData[2], ptrData[3],
                 ptrData[4], ptrData[5], ptrData[6], ptrData[7], 
                 ptrData[8], ptrData[9], ptrData[10], ptrData[11],
-                ptrData[12], ptrData[13], ptrData[14], ptrData[15], sync_sendCount);
+                ptrData[12], ptrData[13], ptrData[14], ptrData[15], sync_recvdCount, sync_sendCount);
                 cout << "sendBytes: "<< sendBytes << endl;
                 return true;
             } else {
@@ -240,11 +245,12 @@ namespace boost_rs485
                 std::cout << "\nport read returns: " + error.message();
                 printf("\n[I RECEIVED]:\n"
                 "[%u][%u][%u][%u\t][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u][%u]\n"
-                "sync_recvdCount = %u\n",
+                "sync_recvdCount = %u\n"
+                "sync_sendCount = %u\n",
                 ptrData[0], ptrData[1], ptrData[2], ptrData[3],
                 ptrData[4], ptrData[5], ptrData[6], ptrData[7], 
                 ptrData[8], ptrData[9], ptrData[10], ptrData[11],
-                ptrData[12], ptrData[13], ptrData[14], ptrData[15], sync_recvdCount);
+                ptrData[12], ptrData[13], ptrData[14], ptrData[15], sync_recvdCount, sync_sendCount);
                 cout << "recvdBytes: "<< recvdBytes << endl;
                 return true;
             } else {
