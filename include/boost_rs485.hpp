@@ -17,7 +17,8 @@
 #include <chrono>
 #include <thread>
 
-#define BOUDRATE 230400
+#define BOUDRATE 256000
+#define IOSSIOSPEED _IOW('T', 2, speed_t)
 
 using namespace std;
 using namespace boost::asio;
@@ -31,6 +32,7 @@ namespace boost_rs485
     private:
         boost::asio::io_service    m_ioService;
         boost::asio::serial_port   m_port;
+        int serial_port;
         uint8_t m_recvdData[proto_max_buff] = {0};
         bool m_recvd = false;
         uint32_t m_sendCount = 0;
@@ -56,9 +58,13 @@ namespace boost_rs485
         }
 
     public:
-        Boost_RS485_Master(std::string dev_name):m_ioService(),m_port(m_ioService, dev_name)
+        Boost_RS485_Master(const char* dev_name):m_ioService(),m_port(m_ioService, dev_name)
         {
-            m_port.set_option(boost::asio::serial_port_base::baud_rate(BOUDRATE));
+            int new_baud = static_cast<int> (BOUDRATE);
+            /* open the device to be non-blocking (read will return immediatly) */
+            serial_port = open(dev_name, O_RDWR | O_NOCTTY | O_NONBLOCK);
+            if (serial_port < 0) {perror(dev_name); exit(-1); } 
+            ioctl (serial_port, IOSSIOSPEED, &new_baud, 1);
             m_port.set_option(boost::asio::serial_port_base::character_size(8));
             m_port.set_option(boost::asio::serial_port_base::stop_bits(serial_port_base::stop_bits::one));
             m_port.set_option(boost::asio::serial_port_base::parity(serial_port_base::parity::none));
@@ -204,9 +210,13 @@ namespace boost_rs485
     class Boost_RS485_Slave_sync : public i_transport::ITransport
     {
     public:
-        Boost_RS485_Slave_sync(string dev_name):sync_ioService(),sync_port(sync_ioService, dev_name)
+        Boost_RS485_Slave_sync(const char* dev_name):sync_ioService(),sync_port(sync_ioService, dev_name)
         {
-            sync_port.set_option(boost::asio::serial_port_base::baud_rate(BOUDRATE));
+            int new_baud = static_cast<int> (BOUDRATE);
+            /* open the device to be non-blocking (read will return immediatly) */
+            serial_port = open(dev_name, O_RDWR | O_NOCTTY | O_NONBLOCK);
+            if (serial_port < 0) {perror(dev_name); exit(-1); } 
+            ioctl (serial_port, IOSSIOSPEED, &new_baud, 1);
             sync_port.set_option(boost::asio::serial_port_base::character_size(8));
             sync_port.set_option(boost::asio::serial_port_base::stop_bits(serial_port_base::stop_bits::one));
             sync_port.set_option(boost::asio::serial_port_base::parity(serial_port_base::parity::none));
@@ -266,6 +276,7 @@ namespace boost_rs485
     private:
         boost::asio::io_service    sync_ioService;
         boost::asio::serial_port   sync_port;
+        int serial_port;
         uint32_t sync_sendCount = 0;
         uint32_t sync_recvdCount = 0;
     };

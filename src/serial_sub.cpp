@@ -4,8 +4,8 @@
 #include <chrono>
 #include <thread>
 
-#define BUFSIZE 18
-#define BOUDRATE 230400
+#define BUFSIZE 4
+#define BOUDRATE 460800
 #define DEVICE "/dev/ttyUSB1"
 
 int main() {
