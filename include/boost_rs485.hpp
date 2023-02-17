@@ -77,6 +77,12 @@ namespace boost_rs485
         
         bool sendData(const uint8_t* ptrData, uint32_t len)
         {
+            // Flush away any bytes previously read or written.
+            int result = tcflush(m_serial_port, TCIOFLUSH);
+            if (result){
+                perror("tcflush failed");  // just a warning, not a fatal error
+            }
+
             boost::system::error_code error;
             size_t sendBytes = m_port.write_some(boost::asio::buffer(ptrData, len), error);
             if(!error){
@@ -107,6 +113,11 @@ namespace boost_rs485
         }
 
         void getData(){
+            // Flush away any bytes previously read or written.
+            int result = tcflush(m_serial_port, TCIOFLUSH);
+            if (result){
+                perror("tcflush failed");  // just a warning, not a fatal error
+            }
             std::memset(m_recvdData, 0, sizeof(m_recvdData));
             m_port.async_read_some(boost::asio::buffer(m_recvdData, sizeof(m_recvdData)),
                     boost::bind(&Boost_RS485_Master::read_handler,this,
@@ -170,6 +181,11 @@ namespace boost_rs485
         
         bool sendData(const uint8_t* ptrData, uint32_t len)
         {
+            // Flush away any bytes previously read or written.
+            int result = tcflush(async_serial_port, TCIOFLUSH);
+            if (result){
+                perror("tcflush failed");  // just a warning, not a fatal error
+            }
             boost::system::error_code error;
             size_t sendBytes = s_port.write_some(boost::asio::buffer(ptrData, len), error);
             if(!error){
@@ -200,6 +216,12 @@ namespace boost_rs485
         }
 
         void getData(){
+            // Flush away any bytes previously read or written.
+            int result = tcflush(async_serial_port, TCIOFLUSH);
+            if (result){
+                perror("tcflush failed");  // just a warning, not a fatal error
+            }
+
             std::memset(s_recvdData, 0, sizeof(s_recvdData));
             s_port.async_read_some(boost::asio::buffer(s_recvdData, sizeof(s_recvdData)),
                     boost::bind(&Boost_RS485_Slave_async::read_handler,this,
@@ -233,6 +255,11 @@ namespace boost_rs485
     
         bool sendData(const uint8_t* ptrData, uint32_t len)
         {
+            // Flush away any bytes previously read or written.
+            int result = tcflush(sync_serial_port, TCIOFLUSH);
+            if (result){
+                perror("tcflush failed");  // just a warning, not a fatal error
+            }
             boost::system::error_code error;
             size_t sendBytes = sync_port.write_some(boost::asio::buffer(ptrData, len), error);
             if(!error){
@@ -256,6 +283,11 @@ namespace boost_rs485
 
         bool getData(uint8_t* ptrData, uint32_t* lenInOut)
         {
+            // Flush away any bytes previously read or written.
+            int result = tcflush(sync_serial_port, TCIOFLUSH);
+            if (result){
+                perror("tcflush failed");  // just a warning, not a fatal error
+            }
             boost::system::error_code error;
             size_t recvdBytes = sync_port.read_some(boost::asio::buffer(ptrData, sizeof(ptrData)), error);
             if(!error){
