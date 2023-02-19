@@ -72,6 +72,12 @@ tabl_reg.hpp
 stdint.h
 -
 
+/home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_rs485.cpp
+cstring
+-
+boost_rs485.hpp
+/home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_rs485.hpp
+
 /home/anton20241/rtc_work/master_slave_2dev_rs485/src/boost_rs485_ClientServer.cpp
 cstring
 -
@@ -84,22 +90,6 @@ boost_rs485_ClientServer.hpp
 tabl_reg_config.hpp
 -
 iostream
--
-
-/home/anton20241/rtc_work/master_slave_2dev_rs485/src/protocol.cpp
-protocol.hpp
-/home/anton20241/rtc_work/master_slave_2dev_rs485/src/protocol.hpp
-umba_crc_table.h
-/home/anton20241/rtc_work/master_slave_2dev_rs485/src/umba_crc_table.h
-assert.h
--
-iostream
--
-chrono
--
-thread
--
-cstring
 -
 
 /usr/include/opencv4/opencv2/aruco.hpp
