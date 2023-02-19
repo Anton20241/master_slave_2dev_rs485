@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "boost_client_async"
+			"path" : "serial_sub"
 		}
 	],
 	"backtrace" : 1,
@@ -27,25 +27,25 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 73,
+				"line" : 61,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 75,
+				"line" : 63,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 94,
+				"line" : 97,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 74,
+				"line" : 62,
 				"parent" : 0
 			},
 			{
@@ -62,7 +62,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : " -std=c++11 -pthread -pthread  "
+					"fragment" : " -std=c++11 -pthread -pthread -g  "
 				}
 			],
 			"defines" : 
@@ -99,65 +99,17 @@
 			"language" : "CXX",
 			"sourceIndexes" : 
 			[
-				0,
-				1,
-				2,
-				3,
-				4
-			]
-		},
-		{
-			"compileCommandFragments" : 
-			[
-				{
-					"fragment" : " "
-				}
-			],
-			"defines" : 
-			[
-				{
-					"backtrace" : 2,
-					"define" : "BOOST_ALL_NO_LIB"
-				},
-				{
-					"backtrace" : 2,
-					"define" : "BOOST_ATOMIC_DYN_LINK"
-				},
-				{
-					"backtrace" : 2,
-					"define" : "BOOST_THREAD_DYN_LINK"
-				}
-			],
-			"includes" : 
-			[
-				{
-					"backtrace" : 4,
-					"path" : "/home/anton20241/rtc_work/master_slave_2dev_rs485/include"
-				},
-				{
-					"backtrace" : 4,
-					"path" : "/home/anton20241/rtc_work/master_slave_2dev_rs485/src"
-				},
-				{
-					"backtrace" : 5,
-					"isSystem" : true,
-					"path" : "/usr/include/opencv4"
-				}
-			],
-			"language" : "C",
-			"sourceIndexes" : 
-			[
-				5
+				0
 			]
 		}
 	],
-	"id" : "boost_client_async::@6890427a1f51a3e7e1df",
+	"id" : "serial_sub::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-std=c++11 -pthread -pthread",
+				"fragment" : "-std=c++11 -pthread -pthread -g",
 				"role" : "flags"
 			},
 			{
@@ -420,8 +372,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "boost_client_async",
-	"nameOnDisk" : "boost_client_async",
+	"name" : "serial_sub",
+	"nameOnDisk" : "serial_sub",
 	"paths" : 
 	{
 		"build" : ".",
@@ -433,25 +385,7 @@
 			"name" : "Source Files",
 			"sourceIndexes" : 
 			[
-				0,
-				1,
-				2,
-				3,
-				4,
-				5
-			]
-		},
-		{
-			"name" : "Header Files",
-			"sourceIndexes" : 
-			[
-				6,
-				7,
-				8,
-				9,
-				10,
-				11,
-				12
+				0
 			]
 		}
 	],
@@ -460,73 +394,8 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/boost_client_async.cpp",
+			"path" : "src/serial_sub.cpp",
 			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/boost_rs485.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/boost_rs485_ClientServer.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/protocol.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/tabl_reg.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 1,
-			"path" : "src/umba_crc_table.c",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"path" : "include/boost_rs485.hpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"path" : "include/boost_rs485_ClientServer.hpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"path" : "include/i_transport.hpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"path" : "include/protocol.hpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"path" : "include/tabl_reg.hpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"path" : "include/tabl_reg_config.hpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"path" : "include/umba_crc_table.h",
-			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "EXECUTABLE"

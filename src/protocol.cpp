@@ -277,16 +277,31 @@ namespace protocol_master
         buff[1] = packLenMin;
         buff[2] = 0x00;
         buff[3] = umba_crc8_table(buff, 3);
-        /* Отправляем NOP */
+        /* Отправляем CmdNOP */
         assert(m_transport.sendData(buff, len));
         /* Ждем зеркало */
-        std::this_thread::sleep_for(std::chrono::microseconds(1200));
+        std::this_thread::sleep_for(std::chrono::microseconds(1000));
 
         if (!m_transport.getData(recvdBuff, &len)) return false;
         if (buff[0] != recvdBuff[0]) return false;
         if (buff[1] != recvdBuff[1]) return false;
         if (buff[2] != recvdBuff[2]) return false;
         if (buff[3] != recvdBuff[3]) return false;
+        return true;
+    }
+
+    bool ProtocolMaster::sendCmdRead(uint8_t addressTo){
+        std::memset(buff, 0, sizeof(buff));
+        std::memset(recvdBuff, 0, sizeof(recvdBuff));
+        buff[0] = addressTo;
+        buff[1] = packLenMin;
+        buff[2] = 0x01;
+        buff[3] = umba_crc8_table(buff, 3);
+        /* Отправляем CmdRead */
+        assert(m_transport.sendData(buff, len));
+        /* Ждем DATA */
+        std::this_thread::sleep_for(std::chrono::microseconds(1000));
+        if (!m_transport.getData(recvdBuff, &len)) return false;
         return true;
     }
 }

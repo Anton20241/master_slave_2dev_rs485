@@ -46,7 +46,7 @@ public:
                 if (answRecvdFailedCount[i] == 10) {
                     std::cout << "\n\n\n!!!DEVICE[" << i << "] CONNECT ERROR!!!\n\n\n";
                 }
-                std::this_thread::sleep_for(std::chrono::microseconds(18000));
+                std::this_thread::sleep_for(std::chrono::microseconds(1000));
             }
             //std::cout << "\n<------[count] = " << count << "------>\n" << std::endl;
             count++; 
@@ -65,8 +65,15 @@ public:
 
     void pollingSensors(){
         size_t count = 0;
+
         while(1){
-            m_protocol.process();  
+            uint16_t angle = 15;
+            uint16_t force = 20;
+            uint16_t current = 20;
+            uint16_t offSet = 1; //???
+            uint8_t data[6] = {angle, force, current};
+            m_tabl.setRegRaw(data, offSet, 6);
+            m_protocol.process();
             //std::cout << "\n<------[count] = " << count << "------>\n" << std::endl;
             count++;
         } 
