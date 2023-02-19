@@ -13,7 +13,7 @@ int main(int argc, char** argv) {
         std::cerr << "[program_name][devAddr(1, 2...)][devPort(1, 2...)]" << std::endl;
         return -1;
     }
-    const char* dev_name = "/dev/ttyUSB0";
+    const char* dev_name = "/dev/ttyUSB1";
     std::cout << "boost_client_sync start.\n\n";
     boost_rs485::Boost_RS485_Slave_sync boostRS485_transp(dev_name);
     tabl_reg::TablReg m_tabl(tabl_reg_cfg::tablRegConfig);

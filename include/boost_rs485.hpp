@@ -125,7 +125,9 @@ namespace boost_rs485
 
         bool transportReset() {return true;}
             
-        ~Boost_RS485_Master() override {};
+        ~Boost_RS485_Master() override {
+            m_port.close();
+        };
     };
     
 /////////////////////////////////////////////////////////////////
@@ -133,7 +135,7 @@ namespace boost_rs485
     {
     private:
         boost::asio::io_service    s_ioService;
-        boost::asio::serial_port   s_port;
+        boost::asio::serial_port   async_port;
         int async_fd;
         uint8_t s_recvdData[proto_max_buff] = {0};
         bool s_recvd = false;
@@ -160,18 +162,18 @@ namespace boost_rs485
         }
 
     public:
-        Boost_RS485_Slave_async(const char* dev_name):s_ioService(),s_port(s_ioService, dev_name)
+        Boost_RS485_Slave_async(const char* dev_name):s_ioService(),async_port(s_ioService, dev_name)
         {
             termios t;
-            async_fd = s_port.native_handle();
+            async_fd = async_port.native_handle();
             if (tcgetattr(async_fd, &t) < 0) { /* handle error */ }
             if (cfsetspeed(&t, BOUDRATE) < 0) { /* handle error */ }
             if (tcsetattr(async_fd, TCSANOW, &t) < 0) { /* handle error */ }
-            //s_port.set_option(boost::asio::serial_port_base::baud_rate(BOUDRATE));
-            s_port.set_option(boost::asio::serial_port_base::character_size(8));
-            s_port.set_option(boost::asio::serial_port_base::stop_bits(serial_port_base::stop_bits::one));
-            s_port.set_option(boost::asio::serial_port_base::parity(serial_port_base::parity::none));
-            s_port.set_option(boost::asio::serial_port_base::flow_control(serial_port_base::flow_control::none));
+            //async_port.set_option(boost::asio::serial_port_base::baud_rate(BOUDRATE));
+            async_port.set_option(boost::asio::serial_port_base::character_size(8));
+            async_port.set_option(boost::asio::serial_port_base::stop_bits(serial_port_base::stop_bits::one));
+            async_port.set_option(boost::asio::serial_port_base::parity(serial_port_base::parity::none));
+            async_port.set_option(boost::asio::serial_port_base::flow_control(serial_port_base::flow_control::none));
 
             boost::thread td(boost::bind(&boost::asio::io_service::run, &s_ioService));
             getData();
@@ -185,7 +187,7 @@ namespace boost_rs485
             perror("tcflush failed");  // just a warning, not a fatal error
             }
             boost::system::error_code error;
-            size_t sendBytes = s_port.write_some(boost::asio::buffer(ptrData, len), error);
+            size_t sendBytes = async_port.write_some(boost::asio::buffer(ptrData, len), error);
             if(!error){
                 s_sendCount++;
                 std::cout << "\nport write returns: " + error.message();
@@ -220,7 +222,7 @@ namespace boost_rs485
             perror("tcflush failed");  // just a warning, not a fatal error
             }
             std::memset(s_recvdData, 0, sizeof(s_recvdData));
-            s_port.async_read_some(boost::asio::buffer(s_recvdData, sizeof(s_recvdData)),
+            async_port.async_read_some(boost::asio::buffer(s_recvdData, sizeof(s_recvdData)),
                     boost::bind(&Boost_RS485_Slave_async::read_handler,this,
                             boost::asio::placeholders::error,
                             boost::asio::placeholders::bytes_transferred));
@@ -228,7 +230,9 @@ namespace boost_rs485
 
         bool transportReset() {return true;}
             
-        ~Boost_RS485_Slave_async() override {};
+        ~Boost_RS485_Slave_async() override {
+            async_port.close();
+        };
     };
 
 /////////////////////////////////////////////////////////////////
@@ -310,7 +314,9 @@ namespace boost_rs485
 
         bool transportReset() {return true;}
             
-        ~Boost_RS485_Slave_sync() override {};
+        ~Boost_RS485_Slave_sync() override {
+            sync_port.close();
+        };
 
     private:
         boost::asio::io_service    sync_ioService;
