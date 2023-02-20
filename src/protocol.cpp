@@ -279,9 +279,6 @@ namespace protocol_master
         buff[3] = umba_crc8_table(buff, 3);
         /* Отправляем CmdNOP */
         assert(m_transport.sendData(buff, len));
-        /* Ждем зеркало */
-        std::this_thread::sleep_for(std::chrono::microseconds(1000));
-
         if (!m_transport.getData(recvdBuff, &len)) return false;
         if (buff[0] != recvdBuff[0]) return false;
         if (buff[1] != recvdBuff[1]) return false;
