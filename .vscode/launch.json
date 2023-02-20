@@ -2,10 +2,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "boost_client_1",
+            "name": "boost_server",
             "type": "cppdbg",
             "request": "launch",
-            "program": "/home/anton20241/rtc_work/rx_tx/build/boost_client_1",
+            "program": "/home/anton20241/rtc_work/rx_tx/build/boost_server",
             "stopAtEntry": false,
             "cwd": "/home/anton20241/rtc_work/rx_tx/build/"
         },
