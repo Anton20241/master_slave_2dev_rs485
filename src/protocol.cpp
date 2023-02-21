@@ -273,12 +273,13 @@ namespace protocol_master
     bool ProtocolMaster::sendCmdNOP(uint8_t addressTo){
         std::memset(buff, 0, sizeof(buff));
         std::memset(recvdBuff, 0, sizeof(recvdBuff));
-        buff[0] = addressTo;
-        buff[1] = packLenMin;
+        buff[0] = addressTo; //33; //addressTo;
+        buff[1] = packLenMin; //4; //packLenMin;
         buff[2] = 0x00;
-        buff[3] = umba_crc8_table(buff, 3);
+        buff[3] = umba_crc8_table(buff, 3); //247; //umba_crc8_table(buff, 3);
         /* Отправляем CmdNOP */
         assert(m_transport.sendData(buff, len));
+        std::this_thread::sleep_for(std::chrono::microseconds(1000));
         if (!m_transport.getData(recvdBuff, &len)) return false;
         if (buff[0] != recvdBuff[0]) return false;
         if (buff[1] != recvdBuff[1]) return false;
