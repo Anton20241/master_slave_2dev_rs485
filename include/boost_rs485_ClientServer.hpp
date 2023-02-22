@@ -46,7 +46,7 @@ public:
                 if (answRecvdFailedCount[i] == 10) {
                     std::cout << "\n\n\n!!!DEVICE[" << i << "] CONNECT ERROR!!!\n\n\n";
                 }
-                std::this_thread::sleep_for(std::chrono::microseconds(1000));
+                std::this_thread::sleep_for(std::chrono::microseconds(1250));
             }
             //std::cout << "\n<------[count] = " << count << "------>\n" << std::endl;
             count++; 
@@ -71,7 +71,16 @@ public:
             uint16_t force = 20;
             uint16_t current = 20;
             uint16_t offSet = 1; //???
-            uint8_t data[6] = {angle, force, current};
+
+            uint8_t angle_l = angle >> 8;
+            uint8_t angle_h = angle & 0xFF;
+            //uint16_t angle_ = (angle_l << 8) + (angle_h);
+            uint8_t force_l = force>>8;
+            uint8_t force_h = force & 0xFF;
+            uint8_t current_l = current >> 8;
+            uint8_t current_h = current & 0xFF;
+
+            uint8_t data[6] = {angle_l, angle_h, force_l, force_h, current_l, current_h };
             m_tabl.setRegRaw(data, offSet, 6);
             m_protocol.process();
             //std::cout << "\n<------[count] = " << count << "------>\n" << std::endl;
