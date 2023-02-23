@@ -23,6 +23,8 @@ chrono
 -
 thread
 -
+mutex
+-
 
 ../include/boost_rs485_ClientServer.hpp
 boost_rs485.hpp
@@ -34,6 +36,10 @@ umba_crc_table.h
 chrono
 -
 thread
+-
+chrono
+-
+ctime
 -
 opencv2/imgproc.hpp
 -
@@ -90,6 +96,22 @@ boost_rs485_ClientServer.hpp
 tabl_reg_config.hpp
 -
 iostream
+-
+
+/home/anton20241/rtc_work/master_slave_2dev_rs485/src/protocol.cpp
+protocol.hpp
+/home/anton20241/rtc_work/master_slave_2dev_rs485/src/protocol.hpp
+umba_crc_table.h
+/home/anton20241/rtc_work/master_slave_2dev_rs485/src/umba_crc_table.h
+assert.h
+-
+iostream
+-
+chrono
+-
+thread
+-
+cstring
 -
 
 /usr/include/opencv4/opencv2/aruco.hpp

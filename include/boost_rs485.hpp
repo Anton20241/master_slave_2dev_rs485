@@ -16,6 +16,7 @@
 #include <cstring>
 #include <chrono>
 #include <thread>
+#include <mutex>
 
 #define BOUDRATE 256000
 
@@ -51,6 +52,9 @@ namespace boost_rs485
         void read_handler(const boost::system::error_code& error,size_t bytes_transferred)
         {
             if(!error){
+                std::chrono::microseconds mcs = std::chrono::duration_cast< std::chrono::microseconds >
+                    (std::chrono::system_clock::now().time_since_epoch());
+                std::cout << "\nread from rs microseconds = " << mcs.count();
                 m_recvdCount++;
                 m_recvd = true;
                 std::cout << "\nport read returns: " + error.message();
@@ -68,7 +72,7 @@ namespace boost_rs485
         }
 
     public:
-        Boost_RS485_Master(const char* dev_name):m_ioService(),m_port(m_ioService, dev_name)
+        Boost_RS485_Master(string dev_Port):m_ioService(),m_port(m_ioService, dev_Port)
         {
             termios t;
             m_fd = m_port.native_handle();
@@ -82,12 +86,16 @@ namespace boost_rs485
             m_port.set_option(boost::asio::serial_port_base::flow_control(serial_port_base::flow_control::none));
 
             boost::thread td(boost::bind(&boost::asio::io_service::run, &m_ioService));
+            //td.join();
             getData();
             
         }
         
         bool sendData(const uint8_t* ptrData, uint32_t len)
         {
+            std::chrono::microseconds mcs = std::chrono::duration_cast< std::chrono::microseconds >
+                (std::chrono::system_clock::now().time_since_epoch());
+            std::cout << "\nsend to rs microseconds = " << mcs.count();
             boost::system::error_code error;
             size_t sendBytes = m_port.write_some(boost::asio::buffer(ptrData, len), error);
             if(!error){
@@ -192,7 +200,7 @@ namespace boost_rs485
         }
 
     public:
-        Boost_RS485_Slave_async(const char* dev_name):s_ioService(),async_port(s_ioService, dev_name)
+        Boost_RS485_Slave_async(string dev_Port):s_ioService(),async_port(s_ioService, dev_Port)
         {
             termios t;
             async_fd = async_port.native_handle();
@@ -261,7 +269,7 @@ namespace boost_rs485
     class Boost_RS485_Slave_sync : public i_transport::ITransport
     {
     public:
-        Boost_RS485_Slave_sync(const char* dev_name):sync_ioService(),sync_port(sync_ioService, dev_name)
+        Boost_RS485_Slave_sync(string dev_Port):sync_ioService(),sync_port(sync_ioService, dev_Port)
         {
             termios t;
             sync_fd = sync_port.native_handle();
@@ -275,6 +283,7 @@ namespace boost_rs485
             sync_port.set_option(boost::asio::serial_port_base::flow_control(serial_port_base::flow_control::none));
 
             boost::thread td(boost::bind(&boost::asio::io_service::run, &sync_ioService));
+            td.join();
         }
     
         bool sendData(const uint8_t* ptrData, uint32_t len)
@@ -282,6 +291,9 @@ namespace boost_rs485
             boost::system::error_code error;
             size_t sendBytes = sync_port.write_some(boost::asio::buffer(ptrData, len), error);
             if(!error){
+                std::chrono::microseconds mcs = std::chrono::duration_cast< std::chrono::microseconds >
+                    (std::chrono::system_clock::now().time_since_epoch());
+                std::cout << "\nsend to rs microseconds = " << mcs.count();
                 sync_sendCount++;
                 std::cout << "\nport write returns: " + error.message();
                 printf("\n[I SEND]:\n"
@@ -305,6 +317,9 @@ namespace boost_rs485
             boost::system::error_code error;
             size_t recvdBytes = sync_port.read_some(boost::asio::buffer(ptrData, sizeof(ptrData)), error);
             if(!error){
+                std::chrono::microseconds mcs = std::chrono::duration_cast< std::chrono::microseconds >
+                    (std::chrono::system_clock::now().time_since_epoch());
+                std::cout << "\nread from rs microseconds = " << mcs.count();
                 sync_recvdCount++;
                 std::cout << "\nport read returns: " + error.message();
                 printf("\n[I RECEIVED]:\n"

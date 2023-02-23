@@ -112,8 +112,8 @@ namespace protocol_master
 
             bool sendCmdNOP(uint8_t addressTo);
             bool sendCmdRead(uint8_t addressTo);
-            bool sendCmdWrite(uint8_t addressTo);
-            bool sendCmdReadWrite(uint8_t addressTo);
+            bool sendCmdWrite(uint8_t addressTo, uint8_t* data, uint32_t dataSize);
+            bool sendCmdReadWrite(uint8_t addressTo, uint8_t* data, uint32_t dataSize);
 
         private:
             i_transport::ITransport&    m_transport;

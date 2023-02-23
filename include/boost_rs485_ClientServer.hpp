@@ -9,6 +9,8 @@
 #include "umba_crc_table.h"
 #include <chrono>
 #include <thread>
+#include <chrono>
+#include <ctime>
 
 #include <opencv2/imgproc.hpp>
 #include <opencv2/highgui.hpp>
@@ -35,7 +37,20 @@ public:
 
         while(1){
             //cv::waitKey(1);
+            
+            uint16_t angle = 15;
+            uint16_t force = 20;
+            uint16_t current = 20;
+            uint8_t angle_l = angle >> 8;
+            uint8_t angle_h = angle & 0xFF;
+            uint8_t force_l = force>>8;
+            uint8_t force_h = force & 0xFF;
+            uint8_t current_l = current >> 8;
+            uint8_t current_h = current & 0xFF;
+            uint8_t data[6] = {angle_l, angle_h, force_l, force_h, current_l, current_h };
+
             for (int i = 0; i < device.size(); i++){
+                auto start = std::chrono::high_resolution_clock::now();
                 answRecvd[i] = m_protocol.sendCmdNOP(device[i]);
 
                 if (!answRecvd[i])
@@ -47,6 +62,11 @@ public:
                     std::cout << "\n\n\n!!!DEVICE[" << i << "] CONNECT ERROR!!!\n\n\n";
                 }
                 std::this_thread::sleep_for(std::chrono::microseconds(1000));
+
+                auto end = std::chrono::high_resolution_clock::now();
+                std::chrono::duration<float> duration = end - start;
+                float mls = duration.count() * 1000;
+                std::cout << "mls: " << mls << std::endl;
             }
             //std::cout << "\n<------[count] = " << count << "------>\n" << std::endl;
             count++; 
@@ -70,8 +90,14 @@ public:
             uint16_t angle = 15;
             uint16_t force = 20;
             uint16_t current = 20;
+            uint8_t angle_l = angle >> 8;
+            uint8_t angle_h = angle & 0xFF;
+            uint8_t force_l = force>>8;
+            uint8_t force_h = force & 0xFF;
+            uint8_t current_l = current >> 8;
+            uint8_t current_h = current & 0xFF;
+            uint8_t data[6] = {angle_l, angle_h, force_l, force_h, current_l, current_h };
             uint16_t offSet = 1; //???
-            uint8_t data[6] = {angle, force, current};
             m_tabl.setRegRaw(data, offSet, 6);
             m_protocol.process();
             //std::cout << "\n<------[count] = " << count << "------>\n" << std::endl;
