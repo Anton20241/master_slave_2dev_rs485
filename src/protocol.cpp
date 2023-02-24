@@ -208,11 +208,60 @@ namespace protocol
 
 namespace protocol_master
 {
+    typedef union
+    {
+        struct
+        {
+            uint8_t id:4;
+            uint8_t cmd:3; //amount of bits
+            uint8_t err:1;
+        };
+    } cmd_field_t;
+
+    /* Индекс полей */
+    static const uint8_t indexAddr          = 0;
+    static const uint8_t indexLen           = 1;
+    static const uint8_t indexCmd           = 2;
+    static const uint8_t indexData          = 3;
+
+    /* Номера команд */
+    static const uint8_t cmdNop             = 0;
+    static const uint8_t cmdRead            = 1;
+    static const uint8_t cmdWrite           = 2;
+    static const uint8_t cmdReadWrite       = 3;
+
     /* Длина пакета */
     static const uint8_t packLenMin         = 4; //????
     static const uint8_t packLenMax         = 16; //????
+    
+    /* Ошибки */
+    static const uint8_t errReadWrite       = 1;
+    static const uint8_t errCmd             = 2;
+    static const uint8_t errLen             = 3;
+    
+    static const uint8_t startRoReg         = 0; //????
 
     static const uint32_t proto_max_buff    = 32; //????
+
+    static inline uint8_t getAddr(uint8_t* ptrBuff)
+    {
+        return ptrBuff[indexAddr];
+    }
+
+    static inline uint8_t getLen(uint8_t* ptrBuff)
+    {
+        return ptrBuff[indexLen];
+    }
+
+    static inline uint8_t getCrc8(uint8_t* ptrBuff, uint32_t len)
+    {
+        return ptrBuff[len - sizeof(uint8_t)];
+    }
+
+    static inline uint8_t getCmd(uint8_t* ptrBuff)
+    {
+        return (uint8_t)((cmd_field_t*)(&ptrBuff[indexCmd]))->cmd;
+    }
     
     ProtocolMaster::ProtocolMaster(i_transport::ITransport& transport)
     :m_transport(transport) {}
@@ -233,10 +282,10 @@ namespace protocol_master
         /* Ждем зеркало */
         std::this_thread::sleep_for(std::chrono::microseconds(1000));
         if (!m_transport.getData(recvdBuff, &len)) return false;
-        if (buff[0] != recvdBuff[0]) return false;
-        if (buff[1] != recvdBuff[1]) return false;
-        if (buff[2] != recvdBuff[2]) return false;
-        if (buff[3] != recvdBuff[3]) return false;
+        if (buff[0] != getAddr(recvdBuff)) return false;
+        if (buff[1] != getLen(recvdBuff)) return false;
+        if (buff[2] != getCmd(recvdBuff)) return false;
+        if (buff[3] != getCrc8(recvdBuff, getLen(recvdBuff))) return false;
         return true;
     }
 
@@ -256,39 +305,60 @@ namespace protocol_master
         return true;
     }
 
-    bool ProtocolMaster::sendCmdWrite(uint8_t addressTo, uint8_t* data, uint32_t dataSize){
+    bool ProtocolMaster::sendCmdWrite(uint8_t addressTo, const uint8_t* data, uint32_t dataSize){
         std::memset(buff, 0, sizeof(buff));
         std::memset(recvdBuff, 0, sizeof(recvdBuff));
         buff[0] = addressTo;
         buff[1] = len + dataSize;
         buff[2] = 0x2;
-        uint8_t m_len = 3;
-        for (; m_len < dataSize; m_len++){
-            buff[m_len] = data[m_len - 3];
-        }
-        buff[m_len] = umba_crc8_table(buff, buff[1] - 1);
+        memcpy(buff + 3, data, dataSize);
+        buff[len + dataSize - sizeof(uint8_t)] = umba_crc8_table(buff, len + dataSize - sizeof(uint8_t));
         /* Отправляем CmdWrite */
-        assert(m_transport.sendData(buff, len));
+        assert(m_transport.sendData(buff, buff[1]));
         return true;
     }
 
-    bool ProtocolMaster::sendCmdReadWrite(uint8_t addressTo, uint8_t* data, uint32_t dataSize){
+    bool ProtocolMaster::sendCmdReadWrite(uint8_t addressTo, const uint8_t* toFinger, uint32_t toFingerSize, 
+                                        uint8_t* fromFinger, uint32_t fromFingerSize){
         std::memset(buff, 0, sizeof(buff));
         std::memset(recvdBuff, 0, sizeof(recvdBuff));
         buff[0] = addressTo;
-        buff[1] = len + dataSize;
+        buff[1] = len + toFingerSize;
         buff[2] = 0x3;
-        uint8_t m_len = 3;
-        for (; m_len < dataSize; m_len++){
-            buff[m_len] = data[m_len - 3];
-        }
-        buff[m_len] = umba_crc8_table(buff, buff[1] - 1);
+        memcpy(buff + 3, toFinger, toFingerSize);
+        buff[len + toFingerSize - sizeof(uint8_t)] = umba_crc8_table(buff, len + toFingerSize - sizeof(uint8_t));
         /* Отправляем CmdReadWrite */
-        assert(m_transport.sendData(buff, m_len));
+        assert(m_transport.sendData(buff, buff[1]));
         /* Ждем DATA */
         std::this_thread::sleep_for(std::chrono::microseconds(1000));
         if (!m_transport.getData(recvdBuff, &len)) return false;
-        if (buff[0] != recvdBuff[0]) return false;
+        if (buff[0] != getAddr(recvdBuff)) return false;
+        fromFingerSize = getLen(recvdBuff);
+        memcpy(fromFinger, recvdBuff, fromFingerSize);
+        return true;
+    }
+
+    bool ProtocolMaster::sendSomeCmd(const uint8_t* data, uint32_t dataSize, uint8_t* bufToTopic, uint32_t bufToTopicSize){
+        std::memset(buff, 0, sizeof(buff));
+        std::memset(recvdBuff, 0, sizeof(recvdBuff));
+        memcpy(buff, data, dataSize);
+        buff[dataSize] = umba_crc8_table(buff, dataSize);
+        /* Отправляем SomeCmd */
+        assert(m_transport.sendData(buff, dataSize + sizeof(uint8_t)));
+        /* Ждем DATA */
+        std::this_thread::sleep_for(std::chrono::microseconds(1000));
+        if (getCmd(buff) == cmdWrite) return true;
+        if (!m_transport.getData(recvdBuff, &len)) return false;
+        if (getCmd(buff) == cmdNop){
+            if (buff[0] != getAddr(recvdBuff)) return false;
+            if (buff[1] != getLen(recvdBuff)) return false;
+            if (buff[2] != getCmd(recvdBuff)) return false;
+            if (buff[3] != getCrc8(recvdBuff, getLen(recvdBuff))) return false;
+        }
+        else if (buff[0] != getAddr(recvdBuff)) return false;
+        bufToTopicSize = getLen(recvdBuff);
+        memcpy(bufToTopic, recvdBuff, bufToTopicSize);
+        
         return true;
     }
 }

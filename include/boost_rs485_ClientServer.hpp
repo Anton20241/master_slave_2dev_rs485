@@ -96,7 +96,8 @@ public:
             uint8_t force_h = force & 0xFF;
             uint8_t current_l = current >> 8;
             uint8_t current_h = current & 0xFF;
-            uint8_t data[6] = {angle_l, angle_h, force_l, force_h, current_l, current_h };
+            uint8_t calibrate = 0x01;
+            uint8_t data[5] = {angle_l, angle_h, force_l, force_h, calibrate };
             uint16_t offSet = 1; //???
             m_tabl.setRegRaw(data, offSet, 6);
             m_protocol.process();
