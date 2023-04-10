@@ -6,10 +6,9 @@
 #include <boost/thread.hpp>
 #include <chrono>
 #include <thread>
+#include <mutex>
 
 #define BUFSIZE 256
-#define BOUDRATE 230400
-#define DEVICE "/dev/ttyUSB0"
 
 using namespace std;
 using namespace boost::asio;
@@ -18,18 +17,32 @@ class Client{
   uint8_t read_msg_[BUFSIZE];
   boost::asio::io_service ios;
   boost::asio::serial_port port;
-  uint32_t count = 0;
+  uint32_t m_recvdCount = 0;
+  uint32_t m_sendCount = 0;
+  std::mutex my_mytex;
+  std::vector<uint8_t> m_copyRecvdData;
 
 private:
-  void handler(const boost::system::error_code& error,size_t bytes_transferred)
+  void handler(const boost::system::error_code& error, size_t bytes_transferred)
   {
-    count++;
-    read_msg_[bytes_transferred] = 0;
-    std::cout << "bytes_transferred: " << bytes_transferred << std::endl;
-    std::cout << "read_msg_: " << read_msg_ << std::endl;
-    std::cout << "count: " << count << std::endl;
-
-    cout << bytes_transferred << " bytes: "<< read_msg_ <<endl;
+    my_mytex.lock();
+    if(!error && bytes_transferred > 0){
+        m_recvdCount++;
+        
+        for (size_t i = 0; i < bytes_transferred; i++){
+            m_copyRecvdData.push_back(read_msg_[i]);
+        }
+        printf("\n[RECEIVED]:\n");
+        for (size_t i = 0; i < m_copyRecvdData.size(); i++)
+        {
+            printf("[%u]", m_copyRecvdData[i]);
+        }
+        std::cout << std::endl;
+        cout << "bytes_transferred: "<< bytes_transferred << endl;
+    } else {
+        std::cout << "\n\033[1;31m[ERROR RESEIVED FROM SERIAL]\033[0m\n";
+    }
+    my_mytex.unlock();
     read_some();
   }
 
@@ -43,10 +56,29 @@ public:
 				     boost::asio::placeholders::bytes_transferred));
   }
 
-
-  Client(const char* dev_name):ios(),port(ios,dev_name)
+  void sendData(const uint8_t* ptrData, uint32_t len)
   {
-    port.set_option(boost::asio::serial_port_base::baud_rate(BOUDRATE));
+      boost::system::error_code error;
+      size_t sendBytes = port.write_some(boost::asio::buffer(ptrData, len), error);
+      if(!error && sendBytes > 0){
+          m_sendCount++;
+          std::cout << "\nport write returns: " + error.message();
+          printf("\n[SEND]:\n");
+          for (size_t i = 0; i < sendBytes; i++)
+          {
+              printf("[%u]", ptrData[i]);
+          }
+          std::cout << std::endl;
+          cout << "sendBytes: "<< sendBytes << endl;
+      } else {
+          std::cout << "error.what()\n";
+      }
+  }
+
+
+  Client(std::string port_, std::string boudrate):ios(),port(ios, port_)
+  {
+    port.set_option(boost::asio::serial_port_base::baud_rate(std::stoi(boudrate)));
     port.set_option(boost::asio::serial_port_base::character_size(8));
     port.set_option(boost::asio::serial_port_base::stop_bits(serial_port_base::stop_bits::one));
     port.set_option(boost::asio::serial_port_base::parity(serial_port_base::parity::none));
@@ -59,8 +91,20 @@ public:
 
 int main(int argc,char* argv[])
 {
+  if(argc < 3){
+      std::cout << "[./serial_sub_async][/dev/ttyX][baudrate]\n";
+      return -1;
+  }
+
+  std::string port = argv[1];
+  std::string baudrate = argv[2];
+
   std::cout << "serial_sub_async start" << std::endl;
-  Client client(DEVICE);
-  while(1){}
+  Client client("/dev/tty" + port, baudrate);
+  while(1){
+    uint8_t dataS[] = {0x01, 0x06, 0x20, 0x01, 0x02, 0xA6};
+    client.sendData(dataS, sizeof(dataS));
+    std::this_thread::sleep_for (std::chrono::milliseconds(1000));
+  }
   return 0;
 }
