@@ -1,3 +1,0 @@
-/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles/edit_cache.dir
-/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles/rebuild_cache.dir
-/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles/serial_sub_async.dir
