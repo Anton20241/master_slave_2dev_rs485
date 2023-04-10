@@ -53,12 +53,7 @@ CMAKE_BINARY_DIR = /home/anton20241/rtc_work/master_slave_2dev_rs485/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/boost_client_sync.dir/all
-all: CMakeFiles/boost_client_async.dir/all
-all: CMakeFiles/boost_server.dir/all
 all: CMakeFiles/serial_sub_async.dir/all
-all: CMakeFiles/serial_sub.dir/all
-all: CMakeFiles/serial_pub.dir/all
 
 .PHONY : all
 
@@ -68,95 +63,9 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/boost_client_sync.dir/clean
-clean: CMakeFiles/boost_client_async.dir/clean
-clean: CMakeFiles/boost_server.dir/clean
 clean: CMakeFiles/serial_sub_async.dir/clean
-clean: CMakeFiles/serial_sub.dir/clean
-clean: CMakeFiles/serial_pub.dir/clean
 
 .PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/boost_client_sync.dir
-
-# All Build rule for target.
-CMakeFiles/boost_client_sync.dir/all:
-	$(MAKE) -f CMakeFiles/boost_client_sync.dir/build.make CMakeFiles/boost_client_sync.dir/depend
-	$(MAKE) -f CMakeFiles/boost_client_sync.dir/build.make CMakeFiles/boost_client_sync.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles --progress-num=8,9,10,11,12,13,14 "Built target boost_client_sync"
-.PHONY : CMakeFiles/boost_client_sync.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/boost_client_sync.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles 7
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/boost_client_sync.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles 0
-.PHONY : CMakeFiles/boost_client_sync.dir/rule
-
-# Convenience name for target.
-boost_client_sync: CMakeFiles/boost_client_sync.dir/rule
-
-.PHONY : boost_client_sync
-
-# clean rule for target.
-CMakeFiles/boost_client_sync.dir/clean:
-	$(MAKE) -f CMakeFiles/boost_client_sync.dir/build.make CMakeFiles/boost_client_sync.dir/clean
-.PHONY : CMakeFiles/boost_client_sync.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/boost_client_async.dir
-
-# All Build rule for target.
-CMakeFiles/boost_client_async.dir/all:
-	$(MAKE) -f CMakeFiles/boost_client_async.dir/build.make CMakeFiles/boost_client_async.dir/depend
-	$(MAKE) -f CMakeFiles/boost_client_async.dir/build.make CMakeFiles/boost_client_async.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target boost_client_async"
-.PHONY : CMakeFiles/boost_client_async.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/boost_client_async.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles 7
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/boost_client_async.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles 0
-.PHONY : CMakeFiles/boost_client_async.dir/rule
-
-# Convenience name for target.
-boost_client_async: CMakeFiles/boost_client_async.dir/rule
-
-.PHONY : boost_client_async
-
-# clean rule for target.
-CMakeFiles/boost_client_async.dir/clean:
-	$(MAKE) -f CMakeFiles/boost_client_async.dir/build.make CMakeFiles/boost_client_async.dir/clean
-.PHONY : CMakeFiles/boost_client_async.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/boost_server.dir
-
-# All Build rule for target.
-CMakeFiles/boost_server.dir/all:
-	$(MAKE) -f CMakeFiles/boost_server.dir/build.make CMakeFiles/boost_server.dir/depend
-	$(MAKE) -f CMakeFiles/boost_server.dir/build.make CMakeFiles/boost_server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles --progress-num=15,16,17,18,19,20,21 "Built target boost_server"
-.PHONY : CMakeFiles/boost_server.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/boost_server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles 7
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/boost_server.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles 0
-.PHONY : CMakeFiles/boost_server.dir/rule
-
-# Convenience name for target.
-boost_server: CMakeFiles/boost_server.dir/rule
-
-.PHONY : boost_server
-
-# clean rule for target.
-CMakeFiles/boost_server.dir/clean:
-	$(MAKE) -f CMakeFiles/boost_server.dir/build.make CMakeFiles/boost_server.dir/clean
-.PHONY : CMakeFiles/boost_server.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/serial_sub_async.dir
@@ -165,7 +74,7 @@ CMakeFiles/boost_server.dir/clean:
 CMakeFiles/serial_sub_async.dir/all:
 	$(MAKE) -f CMakeFiles/serial_sub_async.dir/build.make CMakeFiles/serial_sub_async.dir/depend
 	$(MAKE) -f CMakeFiles/serial_sub_async.dir/build.make CMakeFiles/serial_sub_async.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles --progress-num=26,27 "Built target serial_sub_async"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles --progress-num=1,2 "Built target serial_sub_async"
 .PHONY : CMakeFiles/serial_sub_async.dir/all
 
 # Build rule for subdir invocation for target.
@@ -184,60 +93,6 @@ serial_sub_async: CMakeFiles/serial_sub_async.dir/rule
 CMakeFiles/serial_sub_async.dir/clean:
 	$(MAKE) -f CMakeFiles/serial_sub_async.dir/build.make CMakeFiles/serial_sub_async.dir/clean
 .PHONY : CMakeFiles/serial_sub_async.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/serial_sub.dir
-
-# All Build rule for target.
-CMakeFiles/serial_sub.dir/all:
-	$(MAKE) -f CMakeFiles/serial_sub.dir/build.make CMakeFiles/serial_sub.dir/depend
-	$(MAKE) -f CMakeFiles/serial_sub.dir/build.make CMakeFiles/serial_sub.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles --progress-num=24,25 "Built target serial_sub"
-.PHONY : CMakeFiles/serial_sub.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/serial_sub.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/serial_sub.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles 0
-.PHONY : CMakeFiles/serial_sub.dir/rule
-
-# Convenience name for target.
-serial_sub: CMakeFiles/serial_sub.dir/rule
-
-.PHONY : serial_sub
-
-# clean rule for target.
-CMakeFiles/serial_sub.dir/clean:
-	$(MAKE) -f CMakeFiles/serial_sub.dir/build.make CMakeFiles/serial_sub.dir/clean
-.PHONY : CMakeFiles/serial_sub.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/serial_pub.dir
-
-# All Build rule for target.
-CMakeFiles/serial_pub.dir/all:
-	$(MAKE) -f CMakeFiles/serial_pub.dir/build.make CMakeFiles/serial_pub.dir/depend
-	$(MAKE) -f CMakeFiles/serial_pub.dir/build.make CMakeFiles/serial_pub.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles --progress-num=22,23 "Built target serial_pub"
-.PHONY : CMakeFiles/serial_pub.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/serial_pub.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/serial_pub.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anton20241/rtc_work/master_slave_2dev_rs485/build/CMakeFiles 0
-.PHONY : CMakeFiles/serial_pub.dir/rule
-
-# Convenience name for target.
-serial_pub: CMakeFiles/serial_pub.dir/rule
-
-.PHONY : serial_pub
-
-# clean rule for target.
-CMakeFiles/serial_pub.dir/clean:
-	$(MAKE) -f CMakeFiles/serial_pub.dir/build.make CMakeFiles/serial_pub.dir/clean
-.PHONY : CMakeFiles/serial_pub.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -23,8 +23,9 @@ class Client{
   std::vector<uint8_t> m_copyRecvdData;
 
 private:
-  void handler(const boost::system::error_code& error, size_t bytes_transferred)
+  void read_handler(const boost::system::error_code& error, size_t bytes_transferred)
   {
+    std::cout << "\n\n!!!!!!!!!read_handler!!!!!!!!!\n\n";
     my_mytex.lock();
     if(!error && bytes_transferred > 0){
         m_recvdCount++;
@@ -43,15 +44,15 @@ private:
         std::cout << "\n\033[1;31m[ERROR RESEIVED FROM SERIAL]\033[0m\n";
     }
     my_mytex.unlock();
-    read_some();
+    read_msg_serial();
   }
 
 public:
-  void read_some()
+  void read_msg_serial()
   {
     memset(read_msg_, 0, sizeof(read_msg_));
     port.async_read_some(boost::asio::buffer(read_msg_,sizeof(read_msg_)),
-			 boost::bind(&Client::handler,this,
+			 boost::bind(&Client::read_handler,this,
 				     boost::asio::placeholders::error,
 				     boost::asio::placeholders::bytes_transferred));
   }
@@ -73,6 +74,25 @@ public:
       } else {
           std::cout << "error.what()\n";
       }
+      read_msg_serial();
+  }
+
+  void getData(uint8_t* ptrData)
+  {
+    uint8_t dataR[BUFSIZE] = {0};
+    size_t r = port.read_some(boost::asio::buffer(dataR));
+    // Write data to stdout
+    if(r > 0){
+        m_recvdCount++;
+        printf("\nresvd new pack\n");
+        printf("m_recvdCount = %u\n", m_recvdCount);
+        for(int i = 0; i < r; i++){
+            printf("[%u]", ptrData[i]);
+        }
+        std::cout << std::endl;
+        printf("r = %u\n", r);
+    }
+    memcpy(dataR, ptrData, r);
   }
 
 
@@ -85,7 +105,7 @@ public:
     port.set_option(boost::asio::serial_port_base::flow_control(serial_port_base::flow_control::none));
 
     boost::thread td(boost::bind(&boost::asio::io_service::run,&ios));
-    read_some();
+    read_msg_serial();
   }
 };
 
@@ -104,6 +124,9 @@ int main(int argc,char* argv[])
   while(1){
     uint8_t dataS[] = {0x01, 0x06, 0x20, 0x01, 0x02, 0xA6};
     client.sendData(dataS, sizeof(dataS));
+
+    uint8_t dataR[BUFSIZE];
+    client.getData(dataR);
     std::this_thread::sleep_for (std::chrono::milliseconds(1000));
   }
   return 0;
