@@ -23,6 +23,7 @@ class Client{
   std::vector<uint8_t> m_copyRecvdData;
 
 private:
+
   void read_handler(const boost::system::error_code& error, size_t bytes_transferred)
   {
     std::cout << "\n\n!!!!!!!!!read_handler!!!!!!!!!\n\n";
@@ -46,8 +47,7 @@ private:
     my_mytex.unlock();
     read_msg_serial();
   }
-
-public:
+  
   void read_msg_serial()
   {
     memset(read_msg_, 0, sizeof(read_msg_));
@@ -57,13 +57,33 @@ public:
 				     boost::asio::placeholders::bytes_transferred));
   }
 
-  void sendData(const uint8_t* ptrData, uint32_t len)
+public:
+
+
+  // uint32_t sendData(const uint8_t* ptrData, uint32_t len)
+  // {
+  //   size_t n = port.write_some(boost::asio::buffer(ptrData, len));
+  //   if(n > 0){
+  //       m_sendCount++;
+  //       printf("\nsend new pack\n");
+  //       printf("m_sendCount = %u\n", m_sendCount);
+  //       for(int i = 0; i < n; i++){
+  //           printf("[%u]", ptrData[i]);
+  //       }
+  //       std::cout << std::endl;
+  //       std::cout << "n = " << n << std::endl;
+  //   }
+  //   return n;
+  // }
+
+  uint32_t sendData(const uint8_t* ptrData, uint32_t len)
   {
       boost::system::error_code error;
       size_t sendBytes = port.write_some(boost::asio::buffer(ptrData, len), error);
       if(!error && sendBytes > 0){
           m_sendCount++;
           std::cout << "\nport write returns: " + error.message();
+          
           printf("\n[SEND]:\n");
           for (size_t i = 0; i < sendBytes; i++)
           {
@@ -71,42 +91,50 @@ public:
           }
           std::cout << std::endl;
           cout << "sendBytes: "<< sendBytes << endl;
+          return sendBytes;
       } else {
           std::cout << "error.what()\n";
+          return -1;
       }
-      read_msg_serial();
   }
 
-  void getData(uint8_t* ptrData)
-  {
-    uint8_t dataR[BUFSIZE] = {0};
-    size_t r = port.read_some(boost::asio::buffer(dataR));
-    // Write data to stdout
-    if(r > 0){
-        m_recvdCount++;
-        printf("\nresvd new pack\n");
-        printf("m_recvdCount = %u\n", m_recvdCount);
-        for(int i = 0; i < r; i++){
-            printf("[%u]", ptrData[i]);
-        }
-        std::cout << std::endl;
-        printf("r = %u\n", r);
-    }
-    memcpy(dataR, ptrData, r);
-  }
+  // uint32_t getData(uint8_t* ptrData)
+  // {
+  //   uint8_t dataR[BUFSIZE] = {0};
+  //   size_t r = port.read_some(boost::asio::buffer(dataR));
+  //   // Write data to stdout
+  //   if(r > 0){
+  //       m_recvdCount++;
+  //       printf("\nresvd new pack\n");
+  //       printf("m_recvdCount = %u\n", m_recvdCount);
+  //       for(int i = 0; i < r; i++){
+  //           printf("[%u]", dataR[i]);
+  //       }
+  //       std::cout << std::endl;
+  //       printf("r = %u\n", r);
+  //   }
+  //   memcpy(dataR, ptrData, r);
+  //   return r;
+  // }
 
+    Client(std::string port_, std::string boudrate):ios(),port(ios, port_)
+      {
+          // Configure basic serial port parameters
+          termios t;
+          int m_fd;
+          m_fd = port.native_handle();
+          if (tcgetattr(m_fd, &t) < 0) { /* handle error */ }
+          if (cfsetspeed(&t, std::stoi(boudrate)) < 0) { /* handle error */ }
+          if (tcsetattr(m_fd, TCSANOW, &t) < 0) { /* handle error */ }
+          port.set_option(boost::asio::serial_port_base::baud_rate(std::stoi(boudrate)));
+          port.set_option(boost::asio::serial_port_base::character_size(8 /* data bits */));
+          port.set_option(boost::asio::serial_port_base::parity(boost::asio::serial_port_base::parity::none));
+          port.set_option(boost::asio::serial_port_base::stop_bits(boost::asio::serial_port_base::stop_bits::one));
+          port.set_option(boost::asio::serial_port_base::flow_control(boost::asio::serial_port_base::flow_control::none));
 
-  Client(std::string port_, std::string boudrate):ios(),port(ios, port_)
-  {
-    port.set_option(boost::asio::serial_port_base::baud_rate(std::stoi(boudrate)));
-    port.set_option(boost::asio::serial_port_base::character_size(8));
-    port.set_option(boost::asio::serial_port_base::stop_bits(serial_port_base::stop_bits::one));
-    port.set_option(boost::asio::serial_port_base::parity(serial_port_base::parity::none));
-    port.set_option(boost::asio::serial_port_base::flow_control(serial_port_base::flow_control::none));
-
-    boost::thread td(boost::bind(&boost::asio::io_service::run,&ios));
-    read_msg_serial();
-  }
+          boost::thread td(boost::bind(&boost::asio::io_service::run, &ios));
+          read_msg_serial();
+      }
 };
 
 int main(int argc,char* argv[])
@@ -123,11 +151,8 @@ int main(int argc,char* argv[])
   Client client("/dev/tty" + port, baudrate);
   while(1){
     uint8_t dataS[] = {0x01, 0x06, 0x20, 0x01, 0x02, 0xA6};
-    client.sendData(dataS, sizeof(dataS));
-
-    uint8_t dataR[BUFSIZE];
-    client.getData(dataR);
-    std::this_thread::sleep_for (std::chrono::milliseconds(1000));
+    uint32_t bt = client.sendData(dataS, sizeof(dataS));
+    std::this_thread::sleep_for (std::chrono::milliseconds(100));
   }
   return 0;
 }
