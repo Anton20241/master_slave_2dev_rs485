@@ -3,12 +3,13 @@
 #include <string>
 #include <boost/asio.hpp>
 #include <boost/bind.hpp>
+#include <boost/chrono.hpp>
 #include <boost/thread.hpp>
 #include <chrono>
 #include <thread>
 #include <mutex>
 
-#define BUFSIZE 256
+#define BUFSIZE 16
 
 using namespace std;
 using namespace boost::asio;
@@ -19,32 +20,41 @@ class Client{
   boost::asio::serial_port port;
   uint32_t m_recvdCount = 0;
   uint32_t m_sendCount = 0;
-  std::mutex my_mytex;
+  //std::mutex my_mytex;
   std::vector<uint8_t> m_copyRecvdData;
+  boost::chrono::system_clock::time_point tp_first = boost::chrono::system_clock::now();
 
 private:
 
   void read_handler(const boost::system::error_code& error, size_t bytes_transferred)
   {
-    std::cout << "\n\n!!!!!!!!!read_handler!!!!!!!!!\n\n";
-    my_mytex.lock();
+    std::cout << "!!!!!!!!!read_handler!!!!!!!!!\n";
+    
+    //my_mytex.lock();
     if(!error && bytes_transferred > 0){
+    
+        boost::chrono::duration<double> us = boost::chrono::system_clock::now() - tp_first;
+        std::cout << "exec time: " << us.count() * 1000000 << " us" << std::endl;
+        tp_first = boost::chrono::system_clock::now();
+    
         m_recvdCount++;
+        cout << "m_recvdCount: "<< m_recvdCount << endl;
+        printf("\n[RECEIVED]:\n");
+        for (size_t i = 0; i < bytes_transferred; i++)
+        {
+            printf("[%u]", read_msg_[i]);
+        }
+        std::cout << std::endl;
         
         for (size_t i = 0; i < bytes_transferred; i++){
             m_copyRecvdData.push_back(read_msg_[i]);
         }
-        printf("\n[RECEIVED]:\n");
-        for (size_t i = 0; i < m_copyRecvdData.size(); i++)
-        {
-            printf("[%u]", m_copyRecvdData[i]);
-        }
-        std::cout << std::endl;
+
         cout << "bytes_transferred: "<< bytes_transferred << endl;
     } else {
         std::cout << "\n\033[1;31m[ERROR RESEIVED FROM SERIAL]\033[0m\n";
     }
-    my_mytex.unlock();
+    //my_mytex.unlock();
     read_msg_serial();
   }
   
@@ -59,29 +69,13 @@ private:
 
 public:
 
-
-  // uint32_t sendData(const uint8_t* ptrData, uint32_t len)
-  // {
-  //   size_t n = port.write_some(boost::asio::buffer(ptrData, len));
-  //   if(n > 0){
-  //       m_sendCount++;
-  //       printf("\nsend new pack\n");
-  //       printf("m_sendCount = %u\n", m_sendCount);
-  //       for(int i = 0; i < n; i++){
-  //           printf("[%u]", ptrData[i]);
-  //       }
-  //       std::cout << std::endl;
-  //       std::cout << "n = " << n << std::endl;
-  //   }
-  //   return n;
-  // }
-
   uint32_t sendData(const uint8_t* ptrData, uint32_t len)
   {
       boost::system::error_code error;
-      size_t sendBytes = port.write_some(boost::asio::buffer(ptrData, len), error);
+      size_t sendBytes = write(port,boost::asio::buffer(ptrData, len));
       if(!error && sendBytes > 0){
           m_sendCount++;
+          cout << "m_sendCount: "<< m_sendCount << endl;
           std::cout << "\nport write returns: " + error.message();
           
           printf("\n[SEND]:\n");
@@ -98,24 +92,24 @@ public:
       }
   }
 
-  // uint32_t getData(uint8_t* ptrData)
-  // {
-  //   uint8_t dataR[BUFSIZE] = {0};
-  //   size_t r = port.read_some(boost::asio::buffer(dataR));
-  //   // Write data to stdout
-  //   if(r > 0){
-  //       m_recvdCount++;
-  //       printf("\nresvd new pack\n");
-  //       printf("m_recvdCount = %u\n", m_recvdCount);
-  //       for(int i = 0; i < r; i++){
-  //           printf("[%u]", dataR[i]);
-  //       }
-  //       std::cout << std::endl;
-  //       printf("r = %u\n", r);
-  //   }
-  //   memcpy(dataR, ptrData, r);
-  //   return r;
-  // }
+  uint32_t getData(uint8_t* ptrData)
+  {
+    uint8_t dataR[BUFSIZE] = {0};
+    size_t r = port.read_some(boost::asio::buffer(dataR));
+    // Write data to stdout
+    if(r > 0){
+        m_recvdCount++;
+        printf("\nresvd new pack\n");
+        printf("m_recvdCount = %u\n", m_recvdCount);
+        for(int i = 0; i < r; i++){
+            printf("[%u]", dataR[i]);
+        }
+        std::cout << std::endl;
+        printf("r = %u\n", r);
+    }
+    memcpy(dataR, ptrData, r);
+    return r;
+  }
 
     Client(std::string port_, std::string boudrate):ios(),port(ios, port_)
       {
@@ -132,8 +126,8 @@ public:
           port.set_option(boost::asio::serial_port_base::stop_bits(boost::asio::serial_port_base::stop_bits::one));
           port.set_option(boost::asio::serial_port_base::flow_control(boost::asio::serial_port_base::flow_control::none));
 
-          boost::thread td(boost::bind(&boost::asio::io_service::run, &ios));
-          read_msg_serial();
+          // boost::thread td(boost::bind(&boost::asio::io_service::run, &ios));
+          // read_msg_serial();
       }
 };
 
@@ -153,6 +147,10 @@ int main(int argc,char* argv[])
   while(1){
     uint8_t dataS[] = {0x01, 0x06, 0x20, 0x01, 0x02, 0xA6};
     uint32_t bt = client.sendData(dataS, sizeof(dataS));
+    uint8_t dataR[BUFSIZE] = {0};
+    if (bt > 0){
+      client.getData(dataR);
+    }
     std::this_thread::sleep_for (std::chrono::milliseconds(100));
   }
   return 0;
